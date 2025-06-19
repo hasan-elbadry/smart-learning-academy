@@ -196,6 +196,19 @@ html[lang="ar"] * {
     transform: scale(1.1);
   }
 
+  /* Global card hover effects override */
+  .card-hover:hover {
+    transform: scale(1.02) !important;
+  }
+
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.05) !important;
+  }
+
+  .group:hover .group-hover\:scale-125 {
+    transform: scale(1.05) !important;
+  }
+
   /* Compact text sizes */
   .text-hero {
     font-size: 2.5rem; /* Further reduced */
