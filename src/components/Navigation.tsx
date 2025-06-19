@@ -64,10 +64,11 @@ export function Navigation() {
             to="/"
             className="mr-4 flex items-center space-x-2 group transition-all duration-300 hover-scale-102"
           >
-            <div className="relative">
-              <GraduationCap className="h-6 w-6 text-primary transition-all duration-300 group-hover:rotate-6 group-hover:text-primary/80" />
-              <div className="absolute inset-0 bg-primary/20 rounded-full scale-0 group-hover:scale-110 transition-transform duration-300 -z-10" />
-            </div>
+          <img
+    src="https://smartonlinelearningedu.com/static/media/WhatsApp%20Image%202025-05-26%20at%2000.38.02_5277dbf4.f388d82bb2a41fa81dbf.jpg"
+    alt="Logo"
+    className="h-10 w-10 object-cover rounded-full"
+  />
             <span className="hidden font-semibold text-lg sm:inline-block bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
               {t("home.hero.title")}
             </span>
