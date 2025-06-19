@@ -37,7 +37,7 @@ export function Navigation() {
           key={item.href}
           to={item.href}
           className={cn(
-            "nav-item relative transition-all duration-300 hover:text-primary transform hover:scale-102",
+            "nav-item relative transition-all duration-300 hover:text-primary transform hover-scale-102",
             isActive(item.href)
               ? "text-primary font-medium active"
               : "text-muted-foreground hover:text-foreground",
