@@ -388,8 +388,6 @@ export default function About() {
                       <value.icon className="h-8 w-8" />
                     </div>
                     <CardTitle className="text-card-title group-hover:text-primary transition-colors duration-300">
-                    </div>
-                    <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">
                       {value.title}
                     </CardTitle>
                   </CardHeader>
@@ -450,7 +448,9 @@ export default function About() {
 
         <div className="container mx-auto px-4 text-center relative">
           <AnimatedSection animation="scale-in">
-            <h2 className="text-section-title font-bold mb-5">{t("about.cta.title")}</h2>
+            <h2 className="text-section-title font-bold mb-5">
+              {t("about.cta.title")}
+            </h2>
             <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
               {t("about.cta.subtitle")}
             </p>
