@@ -243,7 +243,7 @@
     transform: translateY(0) scale(0.95);
   }
 
-  /* Ensure button text is always visible */
+  /* Ensure button text is always visible with proper contrast */
   .btn-professional.bg-white {
     color: hsl(var(--primary)) !important;
   }
@@ -253,10 +253,33 @@
     border-color: currentColor;
   }
 
+  /* Force contrast for buttons with potential visibility issues */
+  button.bg-white {
+    color: hsl(var(--primary)) !important;
+  }
+
+  button.text-white.bg-white {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  /* Ensure outline buttons maintain visibility */
+  .btn-professional[data-variant="outline"] {
+    background-color: transparent !important;
+    border: 2px solid currentColor !important;
+  }
+
   /* Fix potential z-index issues for interactive elements */
   .interactive-element {
     @apply relative z-10;
     pointer-events: auto;
+  }
+
+  /* Ensure all clickable elements have proper cursor */
+  button,
+  [role="button"],
+  .cursor-pointer {
+    cursor: pointer !important;
   }
 
   /* Navigation animations */
