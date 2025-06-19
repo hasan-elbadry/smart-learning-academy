@@ -135,7 +135,7 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Slider Section */}
-      <section className="relative h-[90vh] overflow-hidden">
+      <section className="relative h-[90vh] overflow-hidden hero-slider">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <FloatingElement
