@@ -21,16 +21,15 @@ const NotFound = () => {
       <div className="min-h-[80vh] flex items-center justify-center">
         <div className="text-center">
           <div className="text-9xl font-bold text-primary/20 mb-4">404</div>
-          <h1 className="text-4xl font-bold mb-4">Page Not Found</h1>
+          <h1 className="text-4xl font-bold mb-4">{t("notFound.title")}</h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-md">
-            Sorry, we couldn't find the page you're looking for. It might have
-            been moved or deleted.
+            {t("notFound.description")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/">
               <Button size="lg" className="flex items-center gap-2">
                 <Home className="h-5 w-5" />
-                Go Home
+                {t("notFound.home")}
               </Button>
             </Link>
             <Button
@@ -40,7 +39,7 @@ const NotFound = () => {
               className="flex items-center gap-2"
             >
               <ArrowLeft className="h-5 w-5" />
-              Go Back
+              {t("notFound.back")}
             </Button>
           </div>
         </div>
