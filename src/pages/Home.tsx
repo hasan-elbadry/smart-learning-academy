@@ -229,7 +229,7 @@ export default function Home() {
                 "relative overflow-hidden rounded-full transition-all duration-500 cursor-pointer",
                 index === currentSlide
                   ? "w-12 h-4 bg-white shadow-lg"
-                  : "w-4 h-4 bg-white/40 hover:bg-white/60 hover:scale-110",
+                  : "w-4 h-4 bg-white/40 hover:bg-white/60 hover-scale-105",
               )}
             >
               {index === currentSlide && (
@@ -432,7 +432,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="btn-professional px-8 py-4 text-lg border-2 hover:scale-105"
+                  className="btn-professional px-6 py-3 text-base border-2 hover-scale-102"
                 >
                   <BookOpen className="mr-3 h-5 w-5" />
                   {t("common.viewAll")} {t("nav.courses")}
