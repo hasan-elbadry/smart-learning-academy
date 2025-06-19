@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -342,7 +342,7 @@ export default function Contact() {
                               <SelectItem value="+20">🇪🇬 +20</SelectItem>
                               <SelectItem value="+966">🇸🇦 +966</SelectItem>
                               <SelectItem value="+971">🇦🇪 +971</SelectItem>
-                              <SelectItem value="+962">🇯�� +962</SelectItem>
+                              <SelectItem value="+962">🇯🇴 +962</SelectItem>
                               <SelectItem value="+961">🇱🇧 +961</SelectItem>
                               <SelectItem value="+965">🇰🇼 +965</SelectItem>
                             </SelectContent>

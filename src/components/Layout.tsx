@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { Navigation } from "./Navigation";
 import { useI18n } from "@/lib/i18n";
 
