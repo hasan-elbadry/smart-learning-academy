@@ -1,8 +1,34 @@
 import { Layout } from "@/components/Layout";
 import { useI18n } from "@/lib/i18n";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { UserCircle, Award, Building2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  UserCircle,
+  Award,
+  Building2,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Users,
+  TrendingUp,
+  Heart,
+  Target,
+  Eye,
+  Sparkles,
+  GraduationCap,
+  Star,
+  Globe,
+  Briefcase,
+} from "lucide-react";
+import {
+  AnimatedSection,
+  StaggeredList,
+  MagneticButton,
+  FloatingElement,
+  CountUp,
+} from "@/components/AnimatedElements";
 
 export default function About() {
   const { t } = useI18n();
@@ -10,85 +36,405 @@ export default function About() {
   const leadership = {
     name: "Dr. Sally Abo Elsaad",
     title: "Chief Executive Officer / CEO of Smart Learning Academy",
+    avatar:
+      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face",
     qualifications: [
-      "Bachelor of Medicine and Surgery (MBBS)",
-      "Master's in Pediatrics from Tanta University",
-      "MBA in Hospital Management from Switzerland",
-      "DBA in Digital Transformation from Switzerland",
-      "DBA in International Business from Switzerland",
-      "Certified Training Of Trainers (TOT) from IBS",
-      "Certified Director from CMI in the UK",
+      {
+        degree: "Bachelor of Medicine and Surgery (MBBS)",
+        year: "2005",
+        icon: GraduationCap,
+      },
+      {
+        degree: "Master's in Pediatrics from Tanta University",
+        year: "2008",
+        icon: Award,
+      },
+      {
+        degree: "MBA in Hospital Management from Switzerland",
+        year: "2012",
+        icon: Briefcase,
+      },
+      {
+        degree: "DBA in Digital Transformation from Switzerland",
+        year: "2018",
+        icon: TrendingUp,
+      },
+      {
+        degree: "DBA in International Business from Switzerland",
+        year: "2020",
+        icon: Globe,
+      },
+      {
+        degree: "Certified Training Of Trainers (TOT) from IBS",
+        year: "2015",
+        icon: Users,
+      },
+      {
+        degree: "Certified Director from CMI in the UK",
+        year: "2019",
+        icon: Star,
+      },
     ],
     experience:
       "15+ years experience in major hospitals in Egypt and Saudi Arabia",
     previousRole: "Former Medical Director of Tanta El-kher NICU",
+    bio: "Dr. Sally is a visionary leader with a passion for transforming healthcare and education. Her unique combination of medical expertise and business acumen has positioned Smart Learning Academy as a leading educational institution in the region.",
+    achievements: [
+      "Led digital transformation initiatives at 5 major hospitals",
+      "Published 25+ research papers in international journals",
+      "Trained over 1,000 healthcare professionals",
+      "Recipient of Excellence in Leadership Award 2022",
+    ],
+    contact: {
+      email: "sally.ceo@smartlearning.academy",
+      phone: "+966 50 123 4567",
+      office: "Riyadh, Saudi Arabia",
+    },
   };
+
+  const companyValues = [
+    {
+      icon: Target,
+      title: "Our Mission",
+      description:
+        "To provide world-class education that empowers individuals to achieve their full potential and contribute meaningfully to society.",
+      color: "from-blue-500 to-purple-600",
+    },
+    {
+      icon: Eye,
+      title: "Our Vision",
+      description:
+        "To be the leading educational platform in the Middle East, known for innovation, excellence, and transformative learning experiences.",
+      color: "from-green-500 to-emerald-600",
+    },
+    {
+      icon: Heart,
+      title: "Our Values",
+      description:
+        "Excellence, Innovation, Integrity, Inclusivity, and Student-Centricity guide everything we do.",
+      color: "from-red-500 to-pink-600",
+    },
+  ];
+
+  const stats = [
+    { label: "Years of Experience", value: 15, suffix: "+", icon: Calendar },
+    { label: "Students Trained", value: 25000, suffix: "+", icon: Users },
+    { label: "Research Papers", value: 25, suffix: "+", icon: Award },
+    { label: "Success Rate", value: 98, suffix: "%", icon: TrendingUp },
+  ];
+
+  const timeline = [
+    { year: "2005", event: "Graduated with MBBS degree", icon: GraduationCap },
+    { year: "2008", event: "Completed Master's in Pediatrics", icon: Award },
+    {
+      year: "2012",
+      event: "Earned MBA in Hospital Management",
+      icon: Briefcase,
+    },
+    { year: "2018", event: "Founded Smart Learning Academy", icon: Building2 },
+    { year: "2022", event: "Expanded to international markets", icon: Globe },
+  ];
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">{t("nav.about")}</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Meet our Leadership
-          </p>
+      {/* Hero Section */}
+      <section className="py-24 bg-gradient-to-br from-primary/10 via-background to-secondary/10 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <FloatingElement className="absolute top-20 right-20 w-32 h-32 bg-primary/5 rounded-full" />
+          <FloatingElement className="absolute bottom-20 left-20 w-24 h-24 bg-secondary/10 rounded-full" />
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <Card className="overflow-hidden">
-            <div className="md:flex">
-              <div className="md:w-1/3 bg-gradient-to-br from-primary/10 to-secondary/10 p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <UserCircle className="h-32 w-32 mx-auto text-primary mb-4" />
-                  <h2 className="text-2xl font-bold mb-2">{leadership.name}</h2>
-                  <p className="text-primary font-medium">{leadership.title}</p>
-                </div>
-              </div>
-
-              <CardContent className="md:w-2/3 p-8">
-                <div className="space-y-6">
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Award className="h-5 w-5 text-primary" />
-                      <h3 className="text-lg font-semibold">Qualifications</h3>
-                    </div>
-                    <div className="grid gap-2">
-                      {leadership.qualifications.map((qualification, index) => (
-                        <Badge
-                          key={index}
-                          variant="secondary"
-                          className="justify-start text-left"
-                        >
-                          {qualification}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Building2 className="h-5 w-5 text-primary" />
-                      <h3 className="text-lg font-semibold">Experience</h3>
-                    </div>
-                    <p className="text-muted-foreground mb-2">
-                      {leadership.experience}
-                    </p>
-                    <p className="text-muted-foreground">
-                      {leadership.previousRole}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </div>
-          </Card>
-
-          <div className="mt-12 text-center">
-            <p className="text-lg text-muted-foreground">
-              {t("common.pageDescription")}
+        <div className="container mx-auto px-4 relative">
+          <AnimatedSection animation="fade-up" className="text-center mb-20">
+            <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20">
+              <Users className="mr-2 h-5 w-5" />
+              About Us
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+              {t("nav.about")}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Learn about our leadership, mission, and the passionate team
+              behind Smart Learning Academy.
             </p>
+          </AnimatedSection>
+
+          {/* Stats Section */}
+          <StaggeredList
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            itemClassName="text-center group"
+            delay={150}
+          >
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:bg-card transition-all duration-300"
+              >
+                <FloatingElement>
+                  <stat.icon className="h-12 w-12 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </FloatingElement>
+                <div className="text-3xl font-bold mb-2 text-primary">
+                  <CountUp end={stat.value} suffix={stat.suffix} />
+                </div>
+                <p className="text-sm text-muted-foreground font-medium">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </StaggeredList>
+        </div>
+      </section>
+
+      {/* Leadership Profile */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <AnimatedSection animation="fade-up" className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Meet Our Leadership</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Leading with vision, expertise, and unwavering commitment to
+              excellence.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-6xl mx-auto">
+            <AnimatedSection animation="scale-in" delay={200}>
+              <Card className="overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 transition-all duration-500">
+                <div className="lg:flex">
+                  {/* Profile Image and Basic Info */}
+                  <div className="lg:w-2/5 bg-gradient-to-br from-primary/10 to-secondary/10 p-12 flex flex-col items-center justify-center relative">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
+                    <div className="text-center relative z-10">
+                      <FloatingElement>
+                        <div className="relative mb-8">
+                          <div className="w-48 h-48 mx-auto bg-gradient-to-br from-primary to-secondary rounded-full p-1">
+                            <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
+                              <UserCircle className="h-32 w-32 text-primary" />
+                            </div>
+                          </div>
+                          <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg">
+                            <Award className="h-6 w-6" />
+                          </div>
+                        </div>
+                      </FloatingElement>
+                      <h2 className="text-3xl font-bold mb-3 gradient-text">
+                        {leadership.name}
+                      </h2>
+                      <p className="text-primary font-semibold text-lg mb-6">
+                        {leadership.title}
+                      </p>
+
+                      {/* Contact Info */}
+                      <div className="space-y-3 text-sm">
+                        <div className="flex items-center gap-3 justify-center">
+                          <Mail className="h-4 w-4 text-primary" />
+                          <span>{leadership.contact.email}</span>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                          <Phone className="h-4 w-4 text-primary" />
+                          <span>{leadership.contact.phone}</span>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                          <MapPin className="h-4 w-4 text-primary" />
+                          <span>{leadership.contact.office}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Detailed Information */}
+                  <CardContent className="lg:w-3/5 p-12">
+                    <div className="space-y-8">
+                      {/* Bio */}
+                      <div>
+                        <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                          <Sparkles className="h-6 w-6 text-primary" />
+                          About Dr. Sally
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed text-lg mb-4">
+                          {leadership.bio}
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                          <div className="bg-primary/5 p-4 rounded-lg">
+                            <Building2 className="h-5 w-5 text-primary mb-2" />
+                            <p className="font-medium mb-1">Experience</p>
+                            <p className="text-muted-foreground">
+                              {leadership.experience}
+                            </p>
+                          </div>
+                          <div className="bg-secondary/5 p-4 rounded-lg">
+                            <Award className="h-5 w-5 text-primary mb-2" />
+                            <p className="font-medium mb-1">Previous Role</p>
+                            <p className="text-muted-foreground">
+                              {leadership.previousRole}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Qualifications */}
+                      <div>
+                        <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+                          <Award className="h-5 w-5 text-primary" />
+                          Qualifications & Certifications
+                        </h3>
+                        <div className="grid gap-3">
+                          {leadership.qualifications.map(
+                            (qualification, index) => (
+                              <div
+                                key={index}
+                                className="flex items-center gap-4 bg-background/50 p-4 rounded-lg border border-border/50 hover:bg-accent/20 transition-all duration-300 group"
+                              >
+                                <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
+                                  <qualification.icon className="h-5 w-5 text-primary" />
+                                </div>
+                                <div className="flex-1">
+                                  <p className="font-medium">
+                                    {qualification.degree}
+                                  </p>
+                                  <p className="text-sm text-muted-foreground">
+                                    {qualification.year}
+                                  </p>
+                                </div>
+                              </div>
+                            ),
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Key Achievements */}
+                      <div>
+                        <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+                          <Star className="h-5 w-5 text-primary" />
+                          Key Achievements
+                        </h3>
+                        <div className="grid gap-3">
+                          {leadership.achievements.map((achievement, index) => (
+                            <div
+                              key={index}
+                              className="flex items-start gap-3 group"
+                            >
+                              <div className="bg-green-500/10 p-1 rounded-full mt-1">
+                                <div className="w-2 h-2 bg-green-500 rounded-full" />
+                              </div>
+                              <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                                {achievement}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </AnimatedSection>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Company Values */}
+      <section className="py-20 bg-gradient-to-br from-muted/30 to-background">
+        <div className="container mx-auto px-4">
+          <AnimatedSection animation="fade-up" className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Our Foundation</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              The core principles that guide our mission and drive our success.
+            </p>
+          </AnimatedSection>
+
+          <StaggeredList
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            itemClassName="group"
+            delay={200}
+          >
+            {companyValues.map((value, index) => (
+              <MagneticButton key={index} intensity={5}>
+                <Card className="card-hover h-full text-center bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20">
+                  <CardHeader className="pb-4">
+                    <div
+                      className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <FloatingElement>
+                        <value.icon className="h-10 w-10" />
+                      </FloatingElement>
+                    </div>
+                    <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">
+                      {value.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </MagneticButton>
+            ))}
+          </StaggeredList>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <AnimatedSection animation="fade-up" className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Our Journey</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Key milestones in Dr. Sally's remarkable career and the evolution
+              of Smart Learning Academy.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-4xl mx-auto">
+            <StaggeredList
+              className="space-y-8"
+              itemClassName="group"
+              delay={150}
+            >
+              {timeline.map((item, index) => (
+                <div key={index} className="flex items-center gap-8">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 border-4 border-primary/20">
+                      <item.icon className="h-8 w-8 text-primary" />
+                    </div>
+                  </div>
+                  <div className="flex-1 bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-6 group-hover:bg-card transition-colors duration-300">
+                    <div className="text-2xl font-bold text-primary mb-2">
+                      {item.year}
+                    </div>
+                    <p className="text-lg font-medium">{item.event}</p>
+                  </div>
+                </div>
+              ))}
+            </StaggeredList>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground relative overflow-hidden">
+        <FloatingElement className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full" />
+        <FloatingElement className="absolute bottom-20 right-20 w-24 h-24 bg-white/5 rounded-full" />
+
+        <div className="container mx-auto px-4 text-center relative">
+          <AnimatedSection animation="scale-in">
+            <h2 className="text-4xl font-bold mb-6">Ready to Learn with Us?</h2>
+            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+              Join our community of learners and be part of the Smart Learning
+              Academy family.
+            </p>
+            <MagneticButton>
+              <Button
+                size="lg"
+                className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
+              >
+                <Sparkles className="mr-2 h-5 w-5" />
+                Start Your Journey
+              </Button>
+            </MagneticButton>
+          </AnimatedSection>
+        </div>
+      </section>
     </Layout>
   );
 }
