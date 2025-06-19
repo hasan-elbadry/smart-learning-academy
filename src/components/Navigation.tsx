@@ -111,7 +111,11 @@ export function Navigation() {
               className="flex items-center"
               onClick={() => setIsOpen(false)}
             >
-              <GraduationCap className="mr-2 h-4 w-4" />
+            <img
+    src="https://smartonlinelearningedu.com/static/media/WhatsApp%20Image%202025-05-26%20at%2000.38.02_5277dbf4.f388d82bb2a41fa81dbf.jpg"
+    alt="Logo"
+    className="h-10 w-10 object-cover rounded-full"
+  />
               <span className="font-bold">{t("home.hero.title")}</span>
             </Link>
             <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
