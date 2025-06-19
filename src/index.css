@@ -196,6 +196,41 @@ html[lang="ar"] * {
     transform: scale(1.1);
   }
 
+  /* Compact text sizes */
+  .text-hero {
+    font-size: 3.5rem; /* Reduced from text-6xl */
+    line-height: 1.1;
+  }
+
+  .text-hero-lg {
+    font-size: 4rem; /* Reduced from text-7xl/8xl */
+    line-height: 1.1;
+  }
+
+  .text-section-title {
+    font-size: 2.5rem; /* Reduced from text-4xl/5xl */
+    line-height: 1.2;
+  }
+
+  .text-card-title {
+    font-size: 1.25rem; /* Reduced from text-xl */
+    line-height: 1.3;
+  }
+
+  @media (min-width: 768px) {
+    .text-hero {
+      font-size: 4.5rem;
+    }
+
+    .text-hero-lg {
+      font-size: 5rem;
+    }
+
+    .text-section-title {
+      font-size: 3rem;
+    }
+  }
+
   /* Enhanced Professional animations */
   .animate-slide-up {
     animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1);
