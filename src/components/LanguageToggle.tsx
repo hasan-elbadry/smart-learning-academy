@@ -58,6 +58,48 @@ export function LanguageToggle() {
             <div className="ml-auto w-2 h-2 bg-primary rounded-full animate-pulse" />
           )}
         </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => setLanguage("es")}
+          className={`transition-all duration-300 hover:bg-accent/80 cursor-pointer group ${
+            language === "es" ? "bg-accent text-accent-foreground" : ""
+          }`}
+        >
+          <span className="mr-3 text-lg group-hover:scale-125 transition-transform duration-300">
+            🇪🇸
+          </span>
+          <span className="font-medium">Español</span>
+          {language === "es" && (
+            <div className="ml-auto w-2 h-2 bg-primary rounded-full animate-pulse" />
+          )}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => setLanguage("fr")}
+          className={`transition-all duration-300 hover:bg-accent/80 cursor-pointer group ${
+            language === "fr" ? "bg-accent text-accent-foreground" : ""
+          }`}
+        >
+          <span className="mr-3 text-lg group-hover:scale-125 transition-transform duration-300">
+            🇫🇷
+          </span>
+          <span className="font-medium">Français</span>
+          {language === "fr" && (
+            <div className="ml-auto w-2 h-2 bg-primary rounded-full animate-pulse" />
+          )}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => setLanguage("de")}
+          className={`transition-all duration-300 hover:bg-accent/80 cursor-pointer group ${
+            language === "de" ? "bg-accent text-accent-foreground" : ""
+          }`}
+        >
+          <span className="mr-3 text-lg group-hover:scale-125 transition-transform duration-300">
+            🇩🇪
+          </span>
+          <span className="font-medium">Deutsch</span>
+          {language === "de" && (
+            <div className="ml-auto w-2 h-2 bg-primary rounded-full animate-pulse" />
+          )}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
