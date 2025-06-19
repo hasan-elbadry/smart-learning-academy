@@ -18,7 +18,7 @@ export function LanguageToggle() {
         <Button
           variant="ghost"
           size="sm"
-          className="h-8 w-8 px-0 rounded-full hover:bg-accent/50 transition-all duration-300 hover:scale-105 hover:rotate-6 relative group"
+          className="h-8 w-8 px-0 rounded-full hover:bg-accent/50 transition-all duration-300 hover-scale-105 hover:rotate-6 relative group"
         >
           <Languages className="h-4 w-4 transition-transform duration-300 group-hover:scale-105" />
           <span className="sr-only">Toggle language</span>

@@ -62,7 +62,7 @@ export function Navigation() {
         <div className="mr-4 hidden md:flex">
           <Link
             to="/"
-            className="mr-4 flex items-center space-x-2 group transition-all duration-300 hover:scale-102"
+            className="mr-4 flex items-center space-x-2 group transition-all duration-300 hover-scale-102"
           >
             <div className="relative">
               <GraduationCap className="h-6 w-6 text-primary transition-all duration-300 group-hover:rotate-6 group-hover:text-primary/80" />
@@ -86,7 +86,7 @@ export function Navigation() {
           <SheetTrigger asChild>
             <Button
               variant="ghost"
-              className="mr-2 px-0 text-sm hover:bg-accent/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden transition-all duration-300 hover:scale-105 rounded-lg"
+              className="mr-2 px-0 text-sm hover:bg-accent/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden transition-all duration-300 hover-scale-105 rounded-lg"
             >
               <Menu
                 className={cn(
@@ -133,10 +133,10 @@ export function Navigation() {
             </Link>
           </div>
           <nav className="flex items-center space-x-2">
-            <div className="transform hover:scale-105 transition-transform duration-300">
+            <div className="transform hover-scale-105 transition-transform duration-300">
               <LanguageToggle />
             </div>
-            <div className="transform hover:scale-105 transition-transform duration-300">
+            <div className="transform hover-scale-105 transition-transform duration-300">
               <ThemeToggle />
             </div>
           </nav>
