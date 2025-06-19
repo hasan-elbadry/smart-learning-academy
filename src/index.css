@@ -196,11 +196,12 @@ html[lang="ar"] * {
     transform: scale(1.1);
   }
 
-  /* Global card hover effects override */
-  .card-hover:hover {
-    transform: scale(1.02) !important;
+  /* Course cards specific hover effect */
+  .course-card:hover {
+    transform: scale(1.02);
   }
 
+  /* General group scaling for non-course cards */
   .group:hover .group-hover\:scale-110 {
     transform: scale(1.05) !important;
   }
