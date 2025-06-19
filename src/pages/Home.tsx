@@ -249,13 +249,13 @@ export default function Home() {
         </button>
 
         {/* Enhanced Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 z-40">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={cn(
-                "relative overflow-hidden rounded-full transition-all duration-500",
+                "relative overflow-hidden rounded-full transition-all duration-500 cursor-pointer",
                 index === currentSlide
                   ? "w-12 h-4 bg-white shadow-lg"
                   : "w-4 h-4 bg-white/40 hover:bg-white/60 hover:scale-110",
