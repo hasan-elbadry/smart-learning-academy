@@ -37,47 +37,17 @@ export default function About() {
   const leadership = {
     name: "Dr. Sally Abo Elsaad",
     title: "Chief Executive Officer / CEO of Smart Learning Academy",
-    avatar:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face",
     qualifications: [
-      {
-        degree: "Bachelor of Medicine and Surgery (MBBS)",
-        year: "2005",
-        icon: GraduationCap,
-      },
-      {
-        degree: "Master's in Pediatrics from Tanta University",
-        year: "2008",
-        icon: Award,
-      },
-      {
-        degree: "MBA in Hospital Management from Switzerland",
-        year: "2012",
-        icon: Briefcase,
-      },
-      {
-        degree: "DBA in Digital Transformation from Switzerland",
-        year: "2018",
-        icon: TrendingUp,
-      },
-      {
-        degree: "DBA in International Business from Switzerland",
-        year: "2020",
-        icon: Globe,
-      },
-      {
-        degree: "Certified Training Of Trainers (TOT) from IBS",
-        year: "2015",
-        icon: Users,
-      },
-      {
-        degree: "Certified Director from CMI in the UK",
-        year: "2019",
-        icon: Star,
-      },
+      { degree: "Bachelor of Medicine and Surgery (MBBS)", year: "2005", icon: GraduationCap },
+      { degree: "Master's in Pediatrics from Tanta University", year: "2008", icon: Award },
+      { degree: "MBA in Hospital Management from Switzerland", year: "2012", icon: Briefcase },
+      { degree: "DBA in Digital Transformation from Switzerland", year: "2018", icon: TrendingUp },
+      { degree: "DBA in International Business from Switzerland", year: "2020", icon: Globe },
+      { degree: "Certified Training Of Trainers (TOT) from IBS", year: "2015", icon: Users },
+      { degree: "Certified Director from CMI in the UK", year: "2019", icon: Star },
     ],
-    experience:
-      "15+ years experience in major hospitals in Egypt and Saudi Arabia",
+    experience: "15+ years experience in major hospitals in Egypt and Saudi Arabia",
     previousRole: "Former Medical Director of Tanta El-kher NICU",
     bio: "Dr. Sally is a visionary leader with a passion for transforming healthcare and education. Her unique combination of medical expertise and business acumen has positioned Smart Learning Academy as a leading educational institution in the region.",
     achievements: [
@@ -96,23 +66,20 @@ export default function About() {
   const companyValues = [
     {
       icon: Target,
-      title: "Our Mission",
-      description:
-        "To provide world-class education that empowers individuals to achieve their full potential and contribute meaningfully to society.",
+      title: t("about.values.mission.title"),
+      description: t("about.values.mission.description"),
       color: "from-blue-500 to-purple-600",
     },
     {
       icon: Eye,
-      title: "Our Vision",
-      description:
-        "To be the leading educational platform in the Middle East, known for innovation, excellence, and transformative learning experiences.",
+      title: t("about.values.vision.title"),
+      description: t("about.values.vision.description"),
       color: "from-green-500 to-emerald-600",
     },
     {
       icon: Heart,
-      title: "Our Values",
-      description:
-        "Excellence, Innovation, Integrity, Inclusivity, and Student-Centricity guide everything we do.",
+      title: t("about.values.values.title"),
+      description: t("about.values.values.description"),
       color: "from-red-500 to-pink-600",
     },
   ];
@@ -127,11 +94,7 @@ export default function About() {
   const timeline = [
     { year: "2005", event: "Graduated with MBBS degree", icon: GraduationCap },
     { year: "2008", event: "Completed Master's in Pediatrics", icon: Award },
-    {
-      year: "2012",
-      event: "Earned MBA in Hospital Management",
-      icon: Briefcase,
-    },
+    { year: "2012", event: "Earned MBA in Hospital Management", icon: Briefcase },
     { year: "2018", event: "Founded Smart Learning Academy", icon: Building2 },
     { year: "2022", event: "Expanded to international markets", icon: Globe },
   ];
@@ -149,14 +112,13 @@ export default function About() {
           <AnimatedSection animation="fade-up" className="text-center mb-20">
             <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20">
               <Users className="mr-2 h-5 w-5" />
-              About Us
+              {t("about.badge")}
             </Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
-              {t("nav.about")}
+              {t("about.title")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Learn about our leadership, mission, and the passionate team
-              behind Smart Learning Academy.
+              {t("about.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -166,22 +128,22 @@ export default function About() {
             itemClassName="text-center group"
             delay={150}
           >
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:bg-card transition-all duration-300"
-              >
+            {[
+              { icon: Calendar, value: 15, suffix: "+", label: t("about.stats.experience") },
+              { icon: Users, value: 25000, suffix: "+", label: t("about.stats.trained") },
+              { icon: Award, value: 25, suffix: "+", label: t("about.stats.papers") },
+              { icon: TrendingUp, value: 98, suffix: "%", label: t("about.stats.success") },
+            ].map((stat, index) => (
+              <div key={index} className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:bg-card transition-all duration-300">
                 <FloatingElement>
                   <stat.icon className="h-12 w-12 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </FloatingElement>
                 <div className="text-3xl font-bold mb-2 text-primary">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-sm text-muted-foreground font-medium">
-                  {stat.label}
-                </p>
+                <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
               </div>
-            ))}
+            )}
           </StaggeredList>
         </div>
       </section>
@@ -190,10 +152,9 @@ export default function About() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Meet Our Leadership</h2>
+            <h2 className="text-4xl font-bold mb-4">{t("about.leadership.title")}</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Leading with vision, expertise, and unwavering commitment to
-              excellence.
+              {t("about.leadership.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -217,26 +178,22 @@ export default function About() {
                           </div>
                         </div>
                       </FloatingElement>
-                      <h2 className="text-3xl font-bold mb-3 gradient-text">
-                        {leadership.name}
-                      </h2>
-                      <p className="text-primary font-semibold text-lg mb-6">
-                        {leadership.title}
-                      </p>
+                      <h2 className="text-3xl font-bold mb-3 gradient-text">{t("about.leadership.name")}</h2>
+                      <p className="text-primary font-semibold text-lg mb-6">{t("about.leadership.title.position")}</p>
 
                       {/* Contact Info */}
                       <div className="space-y-3 text-sm">
                         <div className="flex items-center gap-3 justify-center">
                           <Mail className="h-4 w-4 text-primary" />
-                          <span>{leadership.contact.email}</span>
+                          <span>{t("about.leadership.contact.email")}</span>
                         </div>
                         <div className="flex items-center gap-3 justify-center">
                           <Phone className="h-4 w-4 text-primary" />
-                          <span>{leadership.contact.phone}</span>
+                          <span>{t("about.leadership.contact.phone")}</span>
                         </div>
                         <div className="flex items-center gap-3 justify-center">
                           <MapPin className="h-4 w-4 text-primary" />
-                          <span>{leadership.contact.office}</span>
+                          <span>{t("about.leadership.contact.office")}</span>
                         </div>
                       </div>
                     </div>
@@ -249,25 +206,21 @@ export default function About() {
                       <div>
                         <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
                           <Sparkles className="h-6 w-6 text-primary" />
-                          About Dr. Sally
+                          {t("about.leadership.about")}
                         </h3>
                         <p className="text-muted-foreground leading-relaxed text-lg mb-4">
-                          {leadership.bio}
+                          {t("about.leadership.bio")}
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                           <div className="bg-primary/5 p-4 rounded-lg">
                             <Building2 className="h-5 w-5 text-primary mb-2" />
-                            <p className="font-medium mb-1">Experience</p>
-                            <p className="text-muted-foreground">
-                              {leadership.experience}
-                            </p>
+                            <p className="font-medium mb-1">{t("about.leadership.experience")}</p>
+                            <p className="text-muted-foreground">15+ سنة خبرة في المستشفيات الكبرى في مصر والمملكة العربية السعودية</p>
                           </div>
                           <div className="bg-secondary/5 p-4 rounded-lg">
                             <Award className="h-5 w-5 text-primary mb-2" />
-                            <p className="font-medium mb-1">Previous Role</p>
-                            <p className="text-muted-foreground">
-                              {leadership.previousRole}
-                            </p>
+                            <p className="font-medium mb-1">{t("about.leadership.previousRole")}</p>
+                            <p className="text-muted-foreground">مديرة طبية سابقة في وحدة العناية المركزة لحديثي الولادة بطنطا الخير</p>
                           </div>
                         </div>
                       </div>
@@ -276,29 +229,23 @@ export default function About() {
                       <div>
                         <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
                           <Award className="h-5 w-5 text-primary" />
-                          Qualifications & Certifications
+                          {t("about.leadership.qualifications")}
                         </h3>
                         <div className="grid gap-3">
-                          {leadership.qualifications.map(
-                            (qualification, index) => (
-                              <div
-                                key={index}
-                                className="flex items-center gap-4 bg-background/50 p-4 rounded-lg border border-border/50 hover:bg-accent/20 transition-all duration-300 group"
-                              >
-                                <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
-                                  <qualification.icon className="h-5 w-5 text-primary" />
-                                </div>
-                                <div className="flex-1">
-                                  <p className="font-medium">
-                                    {qualification.degree}
-                                  </p>
-                                  <p className="text-sm text-muted-foreground">
-                                    {qualification.year}
-                                  </p>
-                                </div>
+                          {leadership.qualifications.map((qualification, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center gap-4 bg-background/50 p-4 rounded-lg border border-border/50 hover:bg-accent/20 transition-all duration-300 group"
+                            >
+                              <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
+                                <qualification.icon className="h-5 w-5 text-primary" />
                               </div>
-                            ),
-                          )}
+                              <div className="flex-1">
+                                <p className="font-medium">{qualification.degree}</p>
+                                <p className="text-sm text-muted-foreground">{qualification.year}</p>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
 
@@ -306,7 +253,7 @@ export default function About() {
                       <div>
                         <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
                           <Star className="h-5 w-5 text-primary" />
-                          Key Achievements
+                          {t("about.leadership.achievements")}
                         </h3>
                         <div className="grid gap-3">
                           {leadership.achievements.map((achievement, index) => (
@@ -337,9 +284,9 @@ export default function About() {
       <section className="py-20 bg-gradient-to-br from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Our Foundation</h2>
+            <h2 className="text-4xl font-bold mb-4">{t("about.values.title")}</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The core principles that guide our mission and drive our success.
+              {t("about.values.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -352,9 +299,7 @@ export default function About() {
               <MagneticButton key={index} intensity={5}>
                 <Card className="card-hover h-full text-center bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20">
                   <CardHeader className="pb-4">
-                    <div
-                      className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}
-                    >
+                    <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
                       <FloatingElement>
                         <value.icon className="h-10 w-10" />
                       </FloatingElement>
@@ -379,10 +324,9 @@ export default function About() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Our Journey</h2>
+            <h2 className="text-4xl font-bold mb-4">{t("about.timeline.title")}</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Key milestones in Dr. Sally's remarkable career and the evolution
-              of Smart Learning Academy.
+              {t("about.timeline.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -400,9 +344,7 @@ export default function About() {
                     </div>
                   </div>
                   <div className="flex-1 bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-6 group-hover:bg-card transition-colors duration-300">
-                    <div className="text-2xl font-bold text-primary mb-2">
-                      {item.year}
-                    </div>
+                    <div className="text-2xl font-bold text-primary mb-2">{item.year}</div>
                     <p className="text-lg font-medium">{item.event}</p>
                   </div>
                 </div>
@@ -419,10 +361,9 @@ export default function About() {
 
         <div className="container mx-auto px-4 text-center relative">
           <AnimatedSection animation="scale-in">
-            <h2 className="text-4xl font-bold mb-6">Ready to Learn with Us?</h2>
+            <h2 className="text-4xl font-bold mb-6">{t("about.cta.title")}</h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join our community of learners and be part of the Smart Learning
-              Academy family.
+              {t("about.cta.subtitle")}
             </p>
             <MagneticButton>
               <Button
@@ -430,7 +371,7 @@ export default function About() {
                 className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
               >
                 <Sparkles className="mr-2 h-5 w-5" />
-                Start Your Journey
+                {t("about.cta.button")}
               </Button>
             </MagneticButton>
           </AnimatedSection>
