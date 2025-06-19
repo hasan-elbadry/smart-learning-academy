@@ -230,7 +230,7 @@ export default function Home() {
           <button
             onClick={prevSlide}
             className={cn(
-              "absolute top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
+              "absolute top-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
               direction === "rtl" ? "right-6" : "left-6",
             )}
           >
@@ -246,7 +246,7 @@ export default function Home() {
           <button
             onClick={nextSlide}
             className={cn(
-              "absolute top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
+              "absolute top-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
               direction === "rtl" ? "left-6" : "right-6",
             )}
           >
