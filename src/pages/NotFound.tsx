@@ -1,8 +1,13 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Layout } from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import { Home, ArrowLeft } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 const NotFound = () => {
   const location = useLocation();
+  const { t } = useI18n();
 
   useEffect(() => {
     console.error(
@@ -12,15 +17,35 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <Layout>
+      <div className="min-h-[80vh] flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-9xl font-bold text-primary/20 mb-4">404</div>
+          <h1 className="text-4xl font-bold mb-4">Page Not Found</h1>
+          <p className="text-xl text-muted-foreground mb-8 max-w-md">
+            Sorry, we couldn't find the page you're looking for. It might have
+            been moved or deleted.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/">
+              <Button size="lg" className="flex items-center gap-2">
+                <Home className="h-5 w-5" />
+                Go Home
+              </Button>
+            </Link>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => window.history.back()}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-5 w-5" />
+              Go Back
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
