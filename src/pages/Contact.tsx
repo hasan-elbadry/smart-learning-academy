@@ -106,30 +106,30 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email Us",
-      value: "info@smartlearning.academy",
-      description: "Send us an email anytime",
+      title: t("contact.info.email.title"),
+      value: t("contact.info.email.value"),
+      description: t("contact.info.email.description"),
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Phone,
-      title: "Call Us",
-      value: "+966 50 123 4567",
-      description: "Mon-Fri from 8am to 5pm",
+      title: t("contact.info.phone.title"),
+      value: t("contact.info.phone.value"),
+      description: t("contact.info.phone.description"),
       color: "from-green-500 to-emerald-500",
     },
     {
       icon: MapPin,
-      title: "Visit Us",
-      value: "Riyadh, Saudi Arabia",
-      description: "Main campus location",
+      title: t("contact.info.location.title"),
+      value: t("contact.info.location.value"),
+      description: t("contact.info.location.description"),
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: Headphones,
-      title: "Support",
-      value: "24/7 Available",
-      description: "We're here to help",
+      title: t("contact.info.support.title"),
+      value: t("contact.info.support.value"),
+      description: t("contact.info.support.description"),
       color: "from-orange-500 to-red-500",
     },
   ];
@@ -159,14 +159,13 @@ export default function Contact() {
           <AnimatedSection animation="fade-up" className="text-center mb-20">
             <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20">
               <MessageCircle className="mr-2 h-5 w-5" />
-              Get in Touch
+              {t("contact.badge")}
             </Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
-              {t("nav.contact")}
+              {t("contact.title")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              If you have any inquiries, please contact us. We're here to help
-              you start your learning journey.
+              {t("contact.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -207,10 +206,11 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <AnimatedSection animation="fade-up" className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Send Us a Message</h2>
+              <h2 className="text-4xl font-bold mb-4">
+                {t("contact.form.title")}
+              </h2>
               <p className="text-xl text-muted-foreground">
-                Fill out the form below and we'll get back to you as soon as
-                possible.
+                {t("contact.form.subtitle")}
               </p>
             </AnimatedSection>
 
@@ -225,7 +225,7 @@ export default function Contact() {
                   <CardHeader>
                     <CardTitle className="text-2xl flex items-center gap-2">
                       <Sparkles className="h-6 w-6 text-primary" />
-                      Contact Form
+                      {t("contact.form.contactForm")}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -237,7 +237,7 @@ export default function Contact() {
                             htmlFor="firstName"
                             className="text-sm font-medium"
                           >
-                            First Name *
+                            {t("contact.form.firstName")} *
                           </Label>
                           <Input
                             id="firstName"
@@ -245,7 +245,9 @@ export default function Contact() {
                             onChange={(e) =>
                               handleInputChange("firstName", e.target.value)
                             }
-                            placeholder="Enter your first name"
+                            placeholder={t(
+                              "contact.form.firstName.placeholder",
+                            )}
                             className="h-11 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
                             required
                           />
@@ -255,7 +257,7 @@ export default function Contact() {
                             htmlFor="lastName"
                             className="text-sm font-medium"
                           >
-                            Last Name *
+                            {t("contact.form.lastName")} *
                           </Label>
                           <Input
                             id="lastName"
@@ -263,7 +265,7 @@ export default function Contact() {
                             onChange={(e) =>
                               handleInputChange("lastName", e.target.value)
                             }
-                            placeholder="Enter your last name"
+                            placeholder={t("contact.form.lastName.placeholder")}
                             className="h-11 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
                             required
                           />
@@ -276,7 +278,7 @@ export default function Contact() {
                           htmlFor="nationality"
                           className="text-sm font-medium"
                         >
-                          Nationality *
+                          {t("contact.form.nationality")} *
                         </Label>
                         <Select
                           value={formData.nationality}
@@ -287,20 +289,24 @@ export default function Contact() {
                         >
                           <SelectTrigger className="h-11 bg-background/50 border-border/50">
                             <Globe className="mr-2 h-4 w-4" />
-                            <SelectValue placeholder="Select your nationality" />
+                            <SelectValue
+                              placeholder={t(
+                                "contact.form.nationality.placeholder",
+                              )}
+                            />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="egypt">🇪🇬 Egypt</SelectItem>
+                            <SelectItem value="egypt">🇪🇬 مصر</SelectItem>
                             <SelectItem value="saudi">
-                              🇸🇦 Saudi Arabia
+                              🇸🇦 المملكة العربية السعودية
                             </SelectItem>
                             <SelectItem value="uae">
-                              🇦🇪 United Arab Emirates
+                              🇦🇪 الإمارات العربية المتحدة
                             </SelectItem>
-                            <SelectItem value="jordan">🇯🇴 Jordan</SelectItem>
-                            <SelectItem value="lebanon">🇱🇧 Lebanon</SelectItem>
-                            <SelectItem value="kuwait">🇰🇼 Kuwait</SelectItem>
-                            <SelectItem value="other">🌍 Other</SelectItem>
+                            <SelectItem value="jordan">🇯🇴 الأردن</SelectItem>
+                            <SelectItem value="lebanon">🇱🇧 لبنان</SelectItem>
+                            <SelectItem value="kuwait">🇰🇼 الكويت</SelectItem>
+                            <SelectItem value="other">🌍 أخرى</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -308,7 +314,7 @@ export default function Contact() {
                       {/* Email */}
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-sm font-medium">
-                          Email Address *
+                          {t("contact.form.email")} *
                         </Label>
                         <Input
                           id="email"
@@ -317,7 +323,7 @@ export default function Contact() {
                           onChange={(e) =>
                             handleInputChange("email", e.target.value)
                           }
-                          placeholder="Enter your email address"
+                          placeholder={t("contact.form.email.placeholder")}
                           className="h-11 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
                           required
                         />
@@ -326,7 +332,7 @@ export default function Contact() {
                       {/* Phone */}
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-sm font-medium">
-                          Phone Number *
+                          {t("contact.form.phone")} *
                         </Label>
                         <div className="flex gap-2">
                           <Select
@@ -354,7 +360,7 @@ export default function Contact() {
                             onChange={(e) =>
                               handleInputChange("phone", e.target.value)
                             }
-                            placeholder="Enter your phone number"
+                            placeholder={t("contact.form.phone.placeholder")}
                             className="flex-1 h-11 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
                             required
                           />
@@ -364,7 +370,7 @@ export default function Contact() {
                       {/* Course Interest */}
                       <div className="space-y-2">
                         <Label htmlFor="course" className="text-sm font-medium">
-                          Course Interest
+                          {t("contact.form.course")}
                         </Label>
                         <Select
                           value={formData.course}
@@ -374,17 +380,32 @@ export default function Contact() {
                         >
                           <SelectTrigger className="h-11 bg-background/50 border-border/50">
                             <Users className="mr-2 h-4 w-4" />
-                            <SelectValue placeholder="Select a course (optional)" />
+                            <SelectValue
+                              placeholder={t("contact.form.course.placeholder")}
+                            />
                           </SelectTrigger>
                           <SelectContent>
-                            {courses.map((course) => (
-                              <SelectItem
-                                key={course}
-                                value={course.toLowerCase()}
-                              >
-                                {course}
-                              </SelectItem>
-                            ))}
+                            <SelectItem value="advanced web development">
+                              تطوير الويب المتقدم
+                            </SelectItem>
+                            <SelectItem value="digital marketing mastery">
+                              إتقان التسويق الرقمي
+                            </SelectItem>
+                            <SelectItem value="data science fundamentals">
+                              أساسيات علوم البيانات
+                            </SelectItem>
+                            <SelectItem value="ui/ux design principles">
+                              مبادئ تصميم UI/UX
+                            </SelectItem>
+                            <SelectItem value="business analytics">
+                              تحليلات الأعمال
+                            </SelectItem>
+                            <SelectItem value="mobile app development">
+                              تطوير تطبيقات الهاتف المحمول
+                            </SelectItem>
+                            <SelectItem value="general inquiry">
+                              استفسار عام
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -395,7 +416,7 @@ export default function Contact() {
                           htmlFor="message"
                           className="text-sm font-medium"
                         >
-                          Message
+                          {t("contact.form.message")}
                         </Label>
                         <Textarea
                           id="message"
@@ -403,7 +424,7 @@ export default function Contact() {
                           onChange={(e) =>
                             handleInputChange("message", e.target.value)
                           }
-                          placeholder="Tell us more about your inquiry..."
+                          placeholder={t("contact.form.message.placeholder")}
                           className="min-h-24 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
                           rows={4}
                         />
@@ -419,12 +440,12 @@ export default function Contact() {
                           {isSubmitting ? (
                             <>
                               <div className="mr-3 h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
-                              Sending...
+                              {t("contact.form.sending")}
                             </>
                           ) : (
                             <>
                               <Send className="mr-3 h-5 w-5" />
-                              Let's Talk
+                              {t("contact.form.submit")}
                               <Heart className="ml-3 h-5 w-5" />
                             </>
                           )}
@@ -446,13 +467,12 @@ export default function Contact() {
                   <CardHeader>
                     <CardTitle className="text-xl flex items-center gap-2 text-green-700 dark:text-green-400">
                       <MessageCircle className="h-6 w-6" />
-                      WhatsApp
+                      {t("contact.whatsapp.title")}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-4">
-                      Prefer instant messaging? Connect with us on WhatsApp for
-                      quick responses.
+                      {t("contact.whatsapp.description")}
                     </p>
                     <MagneticButton>
                       <Button
@@ -465,7 +485,7 @@ export default function Contact() {
                         }
                       >
                         <MessageCircle className="mr-2 h-4 w-4" />
-                        {whatsappNumber}
+                        {t("contact.whatsapp.number")}
                       </Button>
                     </MagneticButton>
                   </CardContent>
@@ -476,20 +496,22 @@ export default function Contact() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <Clock className="h-6 w-6 text-primary" />
-                      <h3 className="text-lg font-semibold">Response Time</h3>
+                      <h3 className="text-lg font-semibold">
+                        {t("contact.response.title")}
+                      </h3>
                     </div>
                     <div className="space-y-3 text-sm">
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500" />
-                        <span>Email: Within 24 hours</span>
+                        <span>{t("contact.response.email")}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500" />
-                        <span>WhatsApp: Within 2 hours</span>
+                        <span>{t("contact.response.whatsapp")}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500" />
-                        <span>Phone: Immediate</span>
+                        <span>{t("contact.response.phone")}</span>
                       </div>
                     </div>
                   </CardContent>
@@ -500,20 +522,28 @@ export default function Contact() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <Clock className="h-6 w-6 text-primary" />
-                      <h3 className="text-lg font-semibold">Office Hours</h3>
+                      <h3 className="text-lg font-semibold">
+                        {t("contact.hours.title")}
+                      </h3>
                     </div>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span>Sunday - Thursday</span>
-                        <span className="font-medium">8:00 AM - 5:00 PM</span>
+                        <span>{t("contact.hours.weekdays")}</span>
+                        <span className="font-medium">
+                          {t("contact.hours.weekdays.time")}
+                        </span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Friday</span>
-                        <span className="font-medium">8:00 AM - 2:00 PM</span>
+                        <span>{t("contact.hours.friday")}</span>
+                        <span className="font-medium">
+                          {t("contact.hours.friday.time")}
+                        </span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Saturday</span>
-                        <span className="font-medium text-red-500">Closed</span>
+                        <span>{t("contact.hours.saturday")}</span>
+                        <span className="font-medium text-red-500">
+                          {t("contact.hours.saturday.time")}
+                        </span>
                       </div>
                     </div>
                   </CardContent>
@@ -531,10 +561,11 @@ export default function Contact() {
 
         <div className="container mx-auto px-4 text-center relative">
           <AnimatedSection animation="scale-in">
-            <h2 className="text-4xl font-bold mb-6">Need Immediate Help?</h2>
+            <h2 className="text-4xl font-bold mb-6">
+              {t("contact.help.title")}
+            </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Check out our FAQ section or reach out to our support team for
-              instant assistance.
+              {t("contact.help.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <MagneticButton>
@@ -543,7 +574,7 @@ export default function Contact() {
                   className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
                 >
                   <Headphones className="mr-2 h-5 w-5" />
-                  Support Center
+                  {t("contact.help.support")}
                 </Button>
               </MagneticButton>
               <MagneticButton>
@@ -553,7 +584,7 @@ export default function Contact() {
                   className="border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
                 >
                   <AlertCircle className="mr-2 h-5 w-5" />
-                  FAQ
+                  {t("contact.help.faq")}
                 </Button>
               </MagneticButton>
             </div>
