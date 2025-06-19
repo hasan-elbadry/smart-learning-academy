@@ -122,7 +122,15 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [heroSlides.length]);
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  };
 
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + heroSlides.length) % heroSlides.length,
+    );
+  };
 
   return (
     <Layout>
@@ -185,28 +193,24 @@ export default function Home() {
                       </p>
                     </div>
 
-                    <div className="hero-text-delay-3 flex flex-col sm:flex-row gap-6">
-                      <MagneticButton>
-                        <Button
-                          size="lg"
-                          className="btn-professional bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg shadow-2xl"
-                        >
-                          <Play className="mr-3 h-6 w-6" />
-                          {t("home.hero.cta")}
-                          <Sparkles className="ml-3 h-5 w-5" />
-                        </Button>
-                      </MagneticButton>
+                    <div className="hero-text-delay-3 flex flex-col sm:flex-row gap-6 relative z-30">
+                      <Button
+                        size="lg"
+                        className="btn-professional bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg shadow-2xl font-semibold"
+                      >
+                        <Play className="mr-3 h-6 w-6" />
+                        {t("home.hero.cta")}
+                        <Sparkles className="ml-3 h-5 w-5" />
+                      </Button>
 
-                      <MagneticButton>
-                        <Button
-                          size="lg"
-                          variant="outline"
-                          className="btn-professional border-2 border-white/80 text-primary hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
-                        >
-                          {t("home.hero.secondary")}
-                          <TrendingUp className="ml-3 h-5 w-5" />
-                        </Button>
-                      </MagneticButton>
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="btn-professional border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 text-lg backdrop-blur-sm font-semibold"
+                      >
+                        {t("home.hero.secondary")}
+                        <TrendingUp className="ml-3 h-5 w-5" />
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -214,6 +218,35 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        {/* Enhanced Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className={cn(
+            "absolute top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/30 shadow-lg",
+            direction === "rtl" ? "right-6" : "left-6",
+          )}
+        >
+          {direction === "rtl" ? (
+            <ChevronRight className="h-7 w-7" />
+          ) : (
+            <ChevronLeft className="h-7 w-7" />
+          )}
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className={cn(
+            "absolute top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/30 shadow-lg",
+            direction === "rtl" ? "left-6" : "right-6",
+          )}
+        >
+          {direction === "rtl" ? (
+            <ChevronLeft className="h-7 w-7" />
+          ) : (
+            <ChevronRight className="h-7 w-7" />
+          )}
+        </button>
 
         {/* Enhanced Slide Indicators */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
