@@ -144,14 +144,14 @@ export default function About() {
 
         <div className="container mx-auto px-4 relative">
           <AnimatedSection animation="fade-up" className="text-center mb-20">
-            <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20">
-              <Users className="mr-2 h-5 w-5" />
+            <Badge className="mb-5 px-4 py-1.5 text-base bg-primary/10 text-primary border-primary/20">
+              <Users className="mr-2 h-4 w-4" />
               {t("about.badge")}
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+            <h1 className="text-section-title font-bold mb-5 gradient-text">
               {t("about.title")}
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {t("about.subtitle")}
             </p>
           </AnimatedSection>
@@ -193,9 +193,9 @@ export default function About() {
                 className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:bg-card transition-all duration-300"
               >
                 <FloatingElement>
-                  <stat.icon className="h-12 w-12 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <stat.icon className="h-10 w-10 mx-auto mb-3 text-primary hover-scale-105 transition-transform duration-300" />
                 </FloatingElement>
-                <div className="text-3xl font-bold mb-2 text-primary">
+                <div className="text-2xl font-bold mb-2 text-primary">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
                 <p className="text-sm text-muted-foreground font-medium">
@@ -211,10 +211,10 @@ export default function About() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-section-title font-bold mb-4">
               {t("about.leadership.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("about.leadership.subtitle")}
             </p>
           </AnimatedSection>
@@ -239,10 +239,10 @@ export default function About() {
                           </div>
                         </div>
                       </FloatingElement>
-                      <h2 className="text-3xl font-bold mb-3 gradient-text">
+                      <h2 className="text-2xl font-bold mb-3 gradient-text">
                         {t("about.leadership.name")}
                       </h2>
-                      <p className="text-primary font-semibold text-lg mb-6">
+                      <p className="text-primary font-medium text-base mb-5">
                         {t("about.leadership.title.position")}
                       </p>
 
@@ -269,11 +269,11 @@ export default function About() {
                     <div className="space-y-8">
                       {/* Bio */}
                       <div>
-                        <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                          <Sparkles className="h-6 w-6 text-primary" />
+                        <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                          <Sparkles className="h-5 w-5 text-primary" />
                           {t("about.leadership.about")}
                         </h3>
-                        <p className="text-muted-foreground leading-relaxed text-lg mb-4">
+                        <p className="text-muted-foreground leading-relaxed text-base mb-4">
                           {t("about.leadership.bio")}
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -365,10 +365,10 @@ export default function About() {
       <section className="py-20 bg-gradient-to-br from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-section-title font-bold mb-4">
               {t("about.values.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("about.values.subtitle")}
             </p>
           </AnimatedSection>
@@ -383,13 +383,11 @@ export default function About() {
                 <Card className="card-hover h-full text-center bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20">
                   <CardHeader className="pb-4">
                     <div
-                      className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center text-white hover-scale-105 transition-transform duration-300`}
                     >
-                      <FloatingElement>
-                        <value.icon className="h-10 w-10" />
-                      </FloatingElement>
+                      <value.icon className="h-8 w-8" />
                     </div>
-                    <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">
+                    <CardTitle className="text-card-title group-hover:text-primary transition-colors duration-300">
                       {value.title}
                     </CardTitle>
                   </CardHeader>
@@ -409,10 +407,10 @@ export default function About() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-section-title font-bold mb-4">
               {t("about.timeline.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("about.timeline.subtitle")}
             </p>
           </AnimatedSection>
@@ -431,10 +429,10 @@ export default function About() {
                     </div>
                   </div>
                   <div className="flex-1 bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-6 group-hover:bg-card transition-colors duration-300">
-                    <div className="text-2xl font-bold text-primary mb-2">
+                    <div className="text-lg font-bold text-primary mb-2">
                       {item.year}
                     </div>
-                    <p className="text-lg font-medium">{item.event}</p>
+                    <p className="text-base font-medium">{item.event}</p>
                   </div>
                 </div>
               ))}
@@ -450,13 +448,15 @@ export default function About() {
 
         <div className="container mx-auto px-4 text-center relative">
           <AnimatedSection animation="scale-in">
-            <h2 className="text-4xl font-bold mb-6">{t("about.cta.title")}</h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            <h2 className="text-section-title font-bold mb-5">
+              {t("about.cta.title")}
+            </h2>
+            <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
               {t("about.cta.subtitle")}
             </p>
             <Button
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white text-primary hover:bg-white/90 px-6 py-3 text-base font-semibold shadow-lg hover:shadow-xl hover-scale-102 transition-all duration-300"
             >
               <Sparkles className="mr-2 h-5 w-5" />
               {t("about.cta.button")}

@@ -37,12 +37,12 @@ export function Navigation() {
           key={item.href}
           to={item.href}
           className={cn(
-            "nav-item relative transition-all duration-300 hover:text-primary transform hover:scale-105",
+            "nav-item relative transition-all duration-300 hover:text-primary transform hover-scale-102",
             isActive(item.href)
-              ? "text-primary font-semibold active"
+              ? "text-primary font-medium active"
               : "text-muted-foreground hover:text-foreground",
-            mobile && "block px-4 py-3 text-lg rounded-lg hover:bg-accent/50",
-            !mobile && "px-3 py-2 rounded-md hover:bg-accent/20",
+            mobile && "block px-3 py-2 text-base rounded-lg hover:bg-accent/50",
+            !mobile && "px-2 py-1.5 text-sm rounded-md hover:bg-accent/20",
           )}
           onClick={() => mobile && setIsOpen(false)}
           style={{ animationDelay: mobile ? `${index * 100}ms` : "0ms" }}
@@ -62,13 +62,13 @@ export function Navigation() {
         <div className="mr-4 hidden md:flex">
           <Link
             to="/"
-            className="mr-6 flex items-center space-x-3 group transition-all duration-300 hover:scale-105"
+            className="mr-4 flex items-center space-x-2 group transition-all duration-300 hover-scale-102"
           >
             <div className="relative">
-              <GraduationCap className="h-8 w-8 text-primary transition-all duration-300 group-hover:rotate-12 group-hover:text-primary/80" />
-              <div className="absolute inset-0 bg-primary/20 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500 -z-10" />
+              <GraduationCap className="h-6 w-6 text-primary transition-all duration-300 group-hover:rotate-6 group-hover:text-primary/80" />
+              <div className="absolute inset-0 bg-primary/20 rounded-full scale-0 group-hover:scale-110 transition-transform duration-300 -z-10" />
             </div>
-            <span className="hidden font-bold text-xl sm:inline-block bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+            <span className="hidden font-semibold text-lg sm:inline-block bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
               {t("home.hero.title")}
             </span>
           </Link>
@@ -86,7 +86,7 @@ export function Navigation() {
           <SheetTrigger asChild>
             <Button
               variant="ghost"
-              className="mr-2 px-0 text-base hover:bg-accent/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden transition-all duration-300 hover:scale-110 rounded-lg"
+              className="mr-2 px-0 text-sm hover:bg-accent/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden transition-all duration-300 hover-scale-105 rounded-lg"
             >
               <Menu
                 className={cn(
@@ -127,16 +127,16 @@ export function Navigation() {
               className="flex items-center space-x-2 md:hidden group transition-all duration-300"
             >
               <GraduationCap className="h-6 w-6 text-primary group-hover:rotate-12 transition-transform duration-300" />
-              <span className="font-bold text-lg bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <span className="font-semibold text-base bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
                 SLA
               </span>
             </Link>
           </div>
           <nav className="flex items-center space-x-2">
-            <div className="transform hover:scale-110 transition-transform duration-300">
+            <div className="transform hover-scale-105 transition-transform duration-300">
               <LanguageToggle />
             </div>
-            <div className="transform hover:scale-110 transition-transform duration-300">
+            <div className="transform hover-scale-105 transition-transform duration-300">
               <ThemeToggle />
             </div>
           </nav>

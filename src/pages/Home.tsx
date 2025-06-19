@@ -176,19 +176,19 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                   <div className="max-w-4xl text-white">
                     <div className="overflow-hidden">
-                      <h1 className="text-6xl md:text-8xl font-bold mb-6 hero-text tracking-tight">
+                      <h1 className="text-hero md:text-hero-lg font-bold mb-5 hero-text tracking-tight">
                         <GlitchText text={slide.title} />
                       </h1>
                     </div>
 
                     <div className="overflow-hidden">
-                      <h2 className="text-3xl md:text-4xl mb-6 opacity-95 hero-text-delay-1 bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+                      <h2 className="text-2xl md:text-3xl mb-5 opacity-95 hero-text-delay-1 bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
                         {slide.subtitle}
                       </h2>
                     </div>
 
                     <div className="overflow-hidden">
-                      <p className="text-xl md:text-2xl mb-8 opacity-85 hero-text-delay-2 leading-relaxed">
+                      <p className="text-lg md:text-xl mb-6 opacity-85 hero-text-delay-2 leading-relaxed">
                         {slide.description}
                       </p>
                     </div>
@@ -196,7 +196,7 @@ export default function Home() {
                     <div className="hero-text-delay-3 flex flex-col sm:flex-row gap-6 relative z-30">
                       <Button
                         size="lg"
-                        className="btn-professional bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg shadow-2xl font-semibold"
+                        className="btn-professional bg-white text-primary hover:bg-white/90 px-6 py-3 text-base shadow-2xl font-semibold hover-scale-102"
                       >
                         <Play className="mr-3 h-6 w-6" />
                         {t("home.hero.cta")}
@@ -206,7 +206,7 @@ export default function Home() {
                       <Button
                         size="lg"
                         variant="outline"
-                        className="btn-professional border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 text-lg backdrop-blur-sm font-semibold"
+                        className="btn-professional border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-3 text-base backdrop-blur-sm font-semibold hover-scale-102"
                       >
                         {t("home.hero.secondary")}
                         <TrendingUp className="ml-3 h-5 w-5" />
@@ -229,7 +229,7 @@ export default function Home() {
                 "relative overflow-hidden rounded-full transition-all duration-500 cursor-pointer",
                 index === currentSlide
                   ? "w-12 h-4 bg-white shadow-lg"
-                  : "w-4 h-4 bg-white/40 hover:bg-white/60 hover:scale-110",
+                  : "w-4 h-4 bg-white/40 hover:bg-white/60 hover-scale-105",
               )}
             >
               {index === currentSlide && (
@@ -255,10 +255,10 @@ export default function Home() {
         <div className="container mx-auto px-4 relative">
           <AnimatedSection animation="fade-up" className="mb-12">
             <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              <h2 className="text-section-title font-bold mb-4 text-white">
                 {t("home.stats.title")}
               </h2>
-              <p className="text-xl opacity-90 max-w-2xl mx-auto">
+              <p className="text-lg opacity-90 max-w-2xl mx-auto">
                 {t("home.stats.subtitle")}
               </p>
             </div>
@@ -297,10 +297,10 @@ export default function Home() {
             ].map((stat, index) => (
               <div key={index} className="relative">
                 <FloatingElement>
-                  <stat.icon className="h-16 w-16 mx-auto mb-6 opacity-80 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:text-yellow-300" />
+                  <stat.icon className="h-12 w-12 mx-auto mb-4 opacity-80 group-hover:opacity-100 transition-all duration-300 hover-scale-105 group-hover:text-yellow-300" />
                 </FloatingElement>
 
-                <div className="text-4xl md:text-5xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl md:text-4xl font-bold mb-3 hover-scale-105 transition-transform duration-300">
                   <CountUp
                     end={stat.value}
                     duration={2500}
@@ -331,14 +331,14 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative">
           <AnimatedSection animation="fade-up" className="text-center mb-20">
-            <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20 animate-pulse-slow">
-              <Sparkles className="mr-2 h-5 w-5" />
+            <Badge className="mb-5 px-4 py-1.5 text-base bg-primary/10 text-primary border-primary/20 animate-pulse-slow">
+              <Sparkles className="mr-2 h-4 w-4" />
               {t("home.featured.badge")}
             </Badge>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+            <h2 className="text-section-title font-bold mb-5 gradient-text">
               {t("home.featured.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {t("home.featured.subtitle")}
             </p>
           </AnimatedSection>
@@ -350,7 +350,7 @@ export default function Home() {
           >
             {featuredCourses.map((course) => (
               <MagneticButton key={course.id} intensity={10}>
-                <Card className="card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group">
+                <Card className="course-card card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group transition-transform duration-300">
                   <div
                     className={cn(
                       "h-56 relative overflow-hidden",
@@ -373,7 +373,7 @@ export default function Home() {
 
                     {/* Price with glow effect */}
                     <div className="absolute bottom-6 right-6 z-10">
-                      <div className="text-white font-bold text-2xl bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                      <div className="text-white font-bold text-xl bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20 group-hover:bg-primary hover-scale-105 transition-all duration-300">
                         {course.price}
                       </div>
                     </div>
@@ -383,7 +383,7 @@ export default function Home() {
                   </div>
 
                   <CardHeader className="pb-4 relative">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300 text-reveal">
+                    <CardTitle className="text-card-title group-hover:text-primary transition-colors duration-300 text-reveal">
                       {course.title}
                     </CardTitle>
                   </CardHeader>
@@ -432,7 +432,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="btn-professional px-8 py-4 text-lg border-2 hover:scale-105"
+                  className="btn-professional px-6 py-3 text-base border-2 hover-scale-102"
                 >
                   <BookOpen className="mr-3 h-5 w-5" />
                   {t("common.viewAll")} {t("nav.courses")}
@@ -454,14 +454,14 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative">
           <AnimatedSection animation="fade-up" className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-700 px-6 py-3 rounded-full mb-6 text-lg font-medium">
-              <CheckCircle className="h-6 w-6" />
+            <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-700 px-4 py-2 rounded-full mb-4 text-base font-medium">
+              <CheckCircle className="h-4 w-4" />
               {t("home.payment.encryption")}
             </div>
-            <h2 className="text-5xl font-bold mb-6">
+            <h2 className="text-section-title font-bold mb-5">
               {t("home.payment.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {t("home.payment.subtitle")}
             </p>
           </AnimatedSection>
@@ -478,13 +478,12 @@ export default function Home() {
                     <FloatingElement duration={4000 + index * 500}>
                       <method.icon
                         className={cn(
-                          "h-16 w-16 mx-auto mb-4 transition-all duration-500 group-hover:scale-125",
+                          "h-12 w-12 mx-auto mb-3 transition-all duration-500 hover-scale-105",
                           method.color,
-                          "group-hover:animate-bounce",
                         )}
                       />
                     </FloatingElement>
-                    <div className="font-semibold text-base group-hover:text-primary transition-colors duration-300">
+                    <div className="font-medium text-sm group-hover:text-primary transition-colors duration-300">
                       {method.name}
                     </div>
 
@@ -506,7 +505,7 @@ export default function Home() {
                 <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                   <CheckCircle className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-lg font-semibold text-green-700 dark:text-green-400">
+                <span className="text-base font-medium text-green-700 dark:text-green-400">
                   {t("home.payment.encryption")}
                 </span>
               </div>
@@ -543,7 +542,7 @@ export default function Home() {
           <AnimatedSection animation="scale-in" className="mb-12">
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-8 py-4 mb-8">
               <Sparkles className="h-6 w-6 animate-pulse" />
-              <span className="text-lg font-semibold">
+              <span className="text-base font-medium">
                 {t("home.hero.subtitle")}
               </span>
               <Sparkles className="h-6 w-6 animate-pulse" />
@@ -551,13 +550,13 @@ export default function Home() {
           </AnimatedSection>
 
           <AnimatedSection animation="fade-up" delay={200}>
-            <h2 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+            <h2 className="text-section-title font-bold mb-6 leading-tight">
               <GlitchText text={t("home.cta.final.title")} />
             </h2>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-up" delay={400}>
-            <p className="text-2xl mb-12 opacity-95 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-lg mb-8 opacity-95 max-w-4xl mx-auto leading-relaxed font-light">
               {t("home.cta.final.subtitle")}
             </p>
           </AnimatedSection>
@@ -568,7 +567,7 @@ export default function Home() {
                 <Link to="/courses">
                   <Button
                     size="lg"
-                    className="btn-professional bg-white text-primary hover:bg-white/90 px-10 py-6 text-xl font-semibold shadow-2xl hover:shadow-white/25"
+                    className="btn-professional bg-white text-primary hover:bg-white/90 px-6 py-3 text-base font-semibold shadow-2xl hover:shadow-white/25 hover-scale-102"
                   >
                     <Play className="mr-3 h-6 w-6" />
                     {t("home.cta.final.button")}
@@ -582,7 +581,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-10 py-6 text-xl backdrop-blur-sm font-semibold"
+                    className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-6 py-3 text-base backdrop-blur-sm font-semibold hover-scale-102"
                   >
                     <Users className="mr-3 h-6 w-6" />
                     {t("home.cta.contact")}
