@@ -483,69 +483,183 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Payment Methods Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+      {/* Enhanced Payment Methods Section */}
+      <section className="py-24 bg-gradient-to-br from-muted/30 to-background relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative">
+          <AnimatedSection animation="fade-up" className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-700 px-6 py-3 rounded-full mb-6 text-lg font-medium">
+              <CheckCircle className="h-6 w-6" />
+              Secure & Trusted
+            </div>
+            <h2 className="text-5xl font-bold mb-6">
               {t("home.payment.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t("home.payment.subtitle")}
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-4xl mx-auto">
+          <StaggeredList
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto"
+            itemClassName="group"
+            delay={100}
+          >
             {paymentMethods.map((method, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                <CardContent className="p-6 text-center">
-                  <method.icon
-                    className={cn("h-12 w-12 mx-auto mb-3", method.color)}
-                  />
-                  <div className="font-medium text-sm">{method.name}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+              <MagneticButton key={index} intensity={5}>
+                <Card className="card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 group-hover:bg-white group-hover:shadow-2xl">
+                  <CardContent className="p-8 text-center">
+                    <FloatingElement duration={4000 + index * 500}>
+                      <method.icon
+                        className={cn(
+                          "h-16 w-16 mx-auto mb-4 transition-all duration-500 group-hover:scale-125",
+                          method.color,
+                          "group-hover:animate-bounce",
+                        )}
+                      />
+                    </FloatingElement>
+                    <div className="font-semibold text-base group-hover:text-primary transition-colors duration-300">
+                      {method.name}
+                    </div>
 
-          <div className="text-center mt-12">
-            <p className="text-muted-foreground">
-              All transactions are secured with 256-bit SSL encryption
-            </p>
-          </div>
+                    {/* Animated glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
+                  </CardContent>
+                </Card>
+              </MagneticButton>
+            ))}
+          </StaggeredList>
+
+          <AnimatedSection
+            animation="scale-in"
+            delay={800}
+            className="text-center mt-16"
+          >
+            <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                  <CheckCircle className="h-4 w-4 text-white" />
+                </div>
+                <span className="text-lg font-semibold text-green-700 dark:text-green-400">
+                  256-bit SSL Encryption
+                </span>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                All transactions are secured with military-grade encryption.
+                Your payment information is never stored on our servers.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Learning?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of students who have transformed their careers with
-            our expert-led courses.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/courses">
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90"
-              >
-                Browse Courses
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10"
-              >
-                Contact Us
-              </Button>
-            </Link>
-          </div>
+      {/* Enhanced CTA Section */}
+      <section className="py-28 bg-gradient-to-br from-primary via-blue-600 to-purple-700 text-primary-foreground relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <FloatingElement
+            className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full"
+            duration={15000}
+          />
+          <FloatingElement
+            className="absolute bottom-20 right-20 w-24 h-24 bg-white/5 rounded-full"
+            duration={12000}
+          />
+          <FloatingElement
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-white/5 rounded-full"
+            duration={20000}
+          />
+
+          {/* Gradient overlay animation */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-30 animate-pulse-slow" />
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative">
+          <AnimatedSection animation="scale-in" className="mb-12">
+            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-8 py-4 mb-8">
+              <Sparkles className="h-6 w-6 animate-pulse" />
+              <span className="text-lg font-semibold">
+                Transform Your Future
+              </span>
+              <Sparkles className="h-6 w-6 animate-pulse" />
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection animation="fade-up" delay={200}>
+            <h2 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+              <GlitchText text="Ready to Start" />
+              <br />
+              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+                Learning?
+              </span>
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection animation="fade-up" delay={400}>
+            <p className="text-2xl mb-12 opacity-95 max-w-4xl mx-auto leading-relaxed font-light">
+              Join{" "}
+              <CountUp
+                end={25000}
+                suffix="+"
+                className="font-bold text-yellow-300"
+              />{" "}
+              students who have transformed their careers with our expert-led
+              courses.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection animation="bounce-in" delay={600}>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
+              <MagneticButton intensity={12}>
+                <Link to="/courses">
+                  <Button
+                    size="lg"
+                    className="btn-professional bg-white text-primary hover:bg-white/90 px-10 py-6 text-xl font-semibold shadow-2xl hover:shadow-white/25"
+                  >
+                    <Play className="mr-3 h-6 w-6" />
+                    Browse Courses
+                    <Sparkles className="ml-3 h-6 w-6" />
+                  </Button>
+                </Link>
+              </MagneticButton>
+
+              <MagneticButton intensity={12}>
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-10 py-6 text-xl backdrop-blur-sm font-semibold"
+                  >
+                    <Users className="mr-3 h-6 w-6" />
+                    Contact Us
+                  </Button>
+                </Link>
+              </MagneticButton>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection animation="fade-in" delay={800} className="mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {[
+                { icon: CheckCircle, text: "30-Day Money Back Guarantee" },
+                { icon: Award, text: "Industry-Recognized Certificates" },
+                { icon: Users, text: "24/7 Student Support" },
+              ].map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20 group hover:bg-white/20 transition-all duration-300"
+                >
+                  <feature.icon className="h-6 w-6 text-yellow-300 group-hover:animate-bounce" />
+                  <span className="font-medium">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </section>
     </Layout>
