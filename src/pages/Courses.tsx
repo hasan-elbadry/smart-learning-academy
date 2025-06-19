@@ -288,7 +288,7 @@ export default function Courses() {
               </div>
 
               <div className="flex items-center justify-between">
-                <p className="text-muted-foreground">
+                <Card className="course-card card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group transition-transform duration-300"
                   {t("courses.found")}{" "}
                   <span className="font-semibold text-primary">
                     {sortedCourses.length}
