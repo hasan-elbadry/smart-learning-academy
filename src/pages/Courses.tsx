@@ -361,10 +361,10 @@ export default function Courses() {
 
                       <div className="absolute bottom-4 left-4 text-white">
                         <div className="flex items-center gap-2 mb-2">
-                          <span className="text-2xl font-bold">
+                          <span className="text-lg font-bold">
                             {course.price}
                           </span>
-                          <span className="text-lg line-through opacity-60">
+                          <span className="text-base line-through opacity-60">
                             {course.originalPrice}
                           </span>
                         </div>
@@ -383,7 +383,7 @@ export default function Courses() {
 
                   <div className="flex-1 flex flex-col">
                     <CardHeader className="pb-4">
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                      <CardTitle className="text-card-title group-hover:text-primary transition-colors duration-300">
                         {course.title}
                       </CardTitle>
                     </CardHeader>
@@ -440,8 +440,8 @@ export default function Courses() {
           {sortedCourses.length === 0 && (
             <AnimatedSection animation="fade-up" className="text-center py-20">
               <div className="max-w-md mx-auto">
-                <BookOpen className="h-24 w-24 mx-auto mb-6 text-muted-foreground/50" />
-                <h3 className="text-2xl font-semibold mb-4">
+                <BookOpen className="h-16 w-16 mx-auto mb-4 text-muted-foreground/50" />
+                <h3 className="text-lg font-semibold mb-3">
                   {t("courses.noResults.title")}
                 </h3>
                 <p className="text-muted-foreground mb-6">
@@ -469,17 +469,17 @@ export default function Courses() {
 
         <div className="container mx-auto px-4 text-center relative">
           <AnimatedSection animation="scale-in">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-section-title font-bold mb-5">
               {t("courses.cta.title")}
             </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
               {t("courses.cta.subtitle")}
             </p>
             <MagneticButton>
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
+                  className="bg-white text-primary hover:bg-white/90 px-6 py-3 text-base hover-scale-102"
                 >
                   <Sparkles className="mr-2 h-5 w-5" />
                   {t("courses.cta.button")}
