@@ -68,6 +68,30 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+        arabic: [
+          '"Noto Sans Arabic"',
+          '"Arabic UI Text"',
+          '"SF Arabic"',
+          '"Segoe UI Historic"',
+          "sans-serif",
+        ],
+      },
       keyframes: {
         "accordion-down": {
           from: {
@@ -85,12 +109,61 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          from: {
+            opacity: "0",
+            transform: "translateY(10px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "slide-in-from-bottom": {
+          from: {
+            transform: "translateY(100%)",
+            opacity: "0",
+          },
+          to: {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.5s ease-out",
+        "slide-in-from-bottom-8": "slide-in-from-bottom 0.5s ease-out",
+        in: "fade-in 0.5s ease-out",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }: any) {
+      const newUtilities = {
+        ".animate-in": {
+          "animation-fill-mode": "both",
+        },
+        ".slide-in-from-bottom-8": {
+          "animation-name": "slide-in-from-bottom",
+          transform: "translateY(2rem)",
+        },
+        ".duration-1000": {
+          "animation-duration": "1000ms",
+        },
+        ".delay-200": {
+          "animation-delay": "200ms",
+        },
+        ".delay-300": {
+          "animation-delay": "300ms",
+        },
+        ".delay-500": {
+          "animation-delay": "500ms",
+        },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 } satisfies Config;
