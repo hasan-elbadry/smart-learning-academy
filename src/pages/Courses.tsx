@@ -419,14 +419,14 @@ export default function Courses() {
                       {course.certificate && (
                         <div className="flex items-center gap-2 text-sm text-green-600">
                           <Award className="h-4 w-4" />
-                          <span>Certificate included</span>
+                          <span>{t("courses.certificate")}</span>
                         </div>
                       )}
 
                       <Link to="/course-details">
                         <Button className="w-full btn-professional group-hover:bg-primary/90 transition-all duration-300">
                           <Play className="mr-2 h-4 w-4" />
-                          View Details
+                          {t("courses.viewDetails")}
                           <TrendingUp className="ml-2 h-4 w-4" />
                         </Button>
                       </Link>
