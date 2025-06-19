@@ -19,12 +19,25 @@ import {
   Smartphone,
   Building2,
   Globe,
+  Sparkles,
+  TrendingUp,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  AnimatedSection,
+  StaggeredList,
+  CountUp,
+  FloatingElement,
+  MagneticButton,
+  GlitchText,
+} from "@/components/AnimatedElements";
+import { useParallax } from "@/hooks/useScrollAnimation";
 
 export default function Home() {
   const { t, direction } = useI18n();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const parallaxOffset = useParallax(0.3);
 
   const heroSlides = [
     {
@@ -124,45 +137,86 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Slider Section */}
-      <section className="relative h-[80vh] overflow-hidden">
+      <section className="relative h-[90vh] overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <FloatingElement
+            className="absolute top-20 right-20 w-32 h-32 bg-white/5 rounded-full"
+            duration={8000}
+          />
+          <FloatingElement
+            className="absolute bottom-40 left-10 w-24 h-24 bg-primary/10 rounded-full"
+            duration={12000}
+          />
+          <FloatingElement
+            className="absolute top-1/2 right-1/3 w-16 h-16 bg-secondary/10 rounded-full"
+            duration={10000}
+          />
+        </div>
+
         <div className="relative h-full">
           {heroSlides.map((slide, index) => (
             <div
               key={index}
               className={cn(
-                "absolute inset-0 transition-opacity duration-1000",
-                index === currentSlide ? "opacity-100" : "opacity-0",
+                "absolute inset-0 transition-all duration-1500 ease-out",
+                index === currentSlide
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-105",
                 slide.image,
               )}
+              style={{
+                transform: `translateY(${parallaxOffset}px) scale(${index === currentSlide ? 1 : 1.05})`,
+              }}
             >
-              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60" />
+
+              {/* Animated overlay patterns */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 opacity-50" />
+
               <div className="relative h-full flex items-center">
                 <div className="container mx-auto px-4">
-                  <div className="max-w-3xl text-white">
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-in slide-in-from-bottom-8 duration-1000">
-                      {slide.title}
-                    </h1>
-                    <h2 className="text-2xl md:text-3xl mb-6 opacity-90 animate-in slide-in-from-bottom-8 duration-1000 delay-200">
-                      {slide.subtitle}
-                    </h2>
-                    <p className="text-lg md:text-xl mb-8 opacity-80 animate-in slide-in-from-bottom-8 duration-1000 delay-300">
-                      {slide.description}
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 animate-in slide-in-from-bottom-8 duration-1000 delay-500">
-                      <Button
-                        size="lg"
-                        className="bg-white text-primary hover:bg-white/90"
-                      >
-                        <Play className="mr-2 h-5 w-5" />
-                        {t("home.hero.cta")}
-                      </Button>
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="border-white text-white hover:bg-white/10"
-                      >
-                        {t("home.hero.secondary")}
-                      </Button>
+                  <div className="max-w-4xl text-white">
+                    <div className="overflow-hidden">
+                      <h1 className="text-6xl md:text-8xl font-bold mb-6 hero-text tracking-tight">
+                        <GlitchText text={slide.title} />
+                      </h1>
+                    </div>
+
+                    <div className="overflow-hidden">
+                      <h2 className="text-3xl md:text-4xl mb-6 opacity-95 hero-text-delay-1 bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+                        {slide.subtitle}
+                      </h2>
+                    </div>
+
+                    <div className="overflow-hidden">
+                      <p className="text-xl md:text-2xl mb-8 opacity-85 hero-text-delay-2 leading-relaxed">
+                        {slide.description}
+                      </p>
+                    </div>
+
+                    <div className="hero-text-delay-3 flex flex-col sm:flex-row gap-6">
+                      <MagneticButton>
+                        <Button
+                          size="lg"
+                          className="btn-professional bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg shadow-2xl"
+                        >
+                          <Play className="mr-3 h-6 w-6" />
+                          {t("home.hero.cta")}
+                          <Sparkles className="ml-3 h-5 w-5" />
+                        </Button>
+                      </MagneticButton>
+
+                      <MagneticButton>
+                        <Button
+                          size="lg"
+                          variant="outline"
+                          className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
+                        >
+                          {t("home.hero.secondary")}
+                          <TrendingUp className="ml-3 h-5 w-5" />
+                        </Button>
+                      </MagneticButton>
                     </div>
                   </div>
                 </div>
@@ -171,145 +225,261 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className={cn(
-            "absolute top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white",
-            direction === "rtl" ? "right-4" : "left-4",
-          )}
-        >
-          {direction === "rtl" ? (
-            <ChevronRight className="h-6 w-6" />
-          ) : (
-            <ChevronLeft className="h-6 w-6" />
-          )}
-        </button>
-        <button
-          onClick={nextSlide}
-          className={cn(
-            "absolute top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white",
-            direction === "rtl" ? "left-4" : "right-4",
-          )}
-        >
-          {direction === "rtl" ? (
-            <ChevronLeft className="h-6 w-6" />
-          ) : (
-            <ChevronRight className="h-6 w-6" />
-          )}
-        </button>
+        {/* Enhanced Navigation Arrows */}
+        <MagneticButton intensity={8}>
+          <button
+            onClick={prevSlide}
+            className={cn(
+              "absolute top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
+              direction === "rtl" ? "right-6" : "left-6",
+            )}
+          >
+            {direction === "rtl" ? (
+              <ChevronRight className="h-7 w-7 morph-icon" />
+            ) : (
+              <ChevronLeft className="h-7 w-7 morph-icon" />
+            )}
+          </button>
+        </MagneticButton>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+        <MagneticButton intensity={8}>
+          <button
+            onClick={nextSlide}
+            className={cn(
+              "absolute top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
+              direction === "rtl" ? "left-6" : "right-6",
+            )}
+          >
+            {direction === "rtl" ? (
+              <ChevronLeft className="h-7 w-7 morph-icon" />
+            ) : (
+              <ChevronRight className="h-7 w-7 morph-icon" />
+            )}
+          </button>
+        </MagneticButton>
+
+        {/* Enhanced Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={cn(
-                "w-3 h-3 rounded-full transition-colors",
-                index === currentSlide ? "bg-white" : "bg-white/50",
+                "relative overflow-hidden rounded-full transition-all duration-500",
+                index === currentSlide
+                  ? "w-12 h-4 bg-white shadow-lg"
+                  : "w-4 h-4 bg-white/40 hover:bg-white/60 hover:scale-110",
               )}
-            />
+            >
+              {index === currentSlide && (
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-80 rounded-full" />
+              )}
+            </button>
           ))}
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <stat.icon className="h-12 w-12 mx-auto mb-4 opacity-80" />
-                <div className="text-3xl md:text-4xl font-bold mb-2">
-                  {stat.value}
+      {/* Enhanced Stats Section */}
+      <section className="py-20 bg-gradient-to-r from-primary via-primary/95 to-primary text-primary-foreground relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent" />
+          <FloatingElement className="absolute top-10 right-20 w-20 h-20 bg-white/10 rounded-full" />
+          <FloatingElement
+            className="absolute bottom-10 left-20 w-16 h-16 bg-white/5 rounded-full"
+            duration={8000}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative">
+          <AnimatedSection animation="fade-up" className="mb-12">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                Our Impact
+              </h2>
+              <p className="text-xl opacity-90 max-w-2xl mx-auto">
+                Trusted by thousands of learners worldwide
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <StaggeredList
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            itemClassName="text-center group"
+            delay={150}
+          >
+            {[
+              {
+                icon: Users,
+                value: 25000,
+                suffix: "+",
+                label: t("home.stats.students"),
+              },
+              {
+                icon: BookOpen,
+                value: 500,
+                suffix: "+",
+                label: t("home.stats.courses"),
+              },
+              {
+                icon: Award,
+                value: 150,
+                suffix: "+",
+                label: t("home.stats.instructors"),
+              },
+              {
+                icon: CheckCircle,
+                value: 94,
+                suffix: "%",
+                label: t("home.stats.completion"),
+              },
+            ].map((stat, index) => (
+              <div key={index} className="relative">
+                <FloatingElement>
+                  <stat.icon className="h-16 w-16 mx-auto mb-6 opacity-80 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:text-yellow-300" />
+                </FloatingElement>
+
+                <div className="text-4xl md:text-5xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <CountUp
+                    end={stat.value}
+                    duration={2500}
+                    suffix={stat.suffix}
+                    className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent"
+                  />
                 </div>
-                <div className="text-sm opacity-80">{stat.label}</div>
+
+                <div className="text-base opacity-80 group-hover:opacity-100 transition-opacity duration-300 font-medium">
+                  {stat.label}
+                </div>
+
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
               </div>
             ))}
-          </div>
+          </StaggeredList>
         </div>
       </section>
 
-      {/* Featured Courses Section */}
-      <section className="py-20 bg-secondary/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+      {/* Enhanced Featured Courses Section */}
+      <section className="py-24 bg-gradient-to-br from-secondary/30 via-background to-secondary/20 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative">
+          <AnimatedSection animation="fade-up" className="text-center mb-20">
+            <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20 animate-pulse-slow">
+              <Sparkles className="mr-2 h-5 w-5" />
+              Featured Courses
+            </Badge>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
               {t("home.featured.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {t("home.featured.subtitle")}
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <StaggeredList
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+            itemClassName="group"
+            delay={200}
+          >
             {featuredCourses.map((course) => (
-              <Card
-                key={course.id}
-                className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-              >
-                <div
-                  className={cn(
-                    "h-48 relative",
-                    course.image,
-                    "group-hover:scale-105 transition-transform duration-500",
-                  )}
-                >
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-white/90 text-gray-800">
-                      {course.level}
-                    </Badge>
-                  </div>
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
-                  <div className="absolute bottom-4 right-4">
-                    <div className="text-white font-bold text-xl">
-                      {course.price}
-                    </div>
-                  </div>
-                </div>
+              <MagneticButton key={course.id} intensity={10}>
+                <Card className="card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group">
+                  <div
+                    className={cn(
+                      "h-56 relative overflow-hidden",
+                      course.image,
+                    )}
+                  >
+                    {/* Floating badge */}
+                    <FloatingElement className="absolute top-6 left-6 z-10">
+                      <Badge className="bg-white/95 text-gray-800 shadow-lg backdrop-blur-sm px-3 py-1">
+                        <Zap className="mr-1 h-4 w-4" />
+                        {course.level}
+                      </Badge>
+                    </FloatingElement>
 
-                <CardHeader className="pb-4">
-                  <CardTitle className="group-hover:text-primary transition-colors">
-                    {course.title}
-                  </CardTitle>
-                </CardHeader>
+                    {/* Gradient overlay with animation */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-700" />
 
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">{course.description}</p>
+                    {/* Animated geometric shapes */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full transform translate-x-10 -translate-y-10 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-700" />
 
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <span>{course.rating}</span>
+                    {/* Price with glow effect */}
+                    <div className="absolute bottom-6 right-6 z-10">
+                      <div className="text-white font-bold text-2xl bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        {course.price}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Users className="h-4 w-4" />
-                      <span>{course.students.toLocaleString()}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      <span>{course.duration}</span>
-                    </div>
+
+                    {/* Hover overlay effect */}
+                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  <Link to="/course-details">
-                    <Button className="w-full group-hover:bg-primary/90 transition-colors">
-                      View Details
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+                  <CardHeader className="pb-4 relative">
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300 text-reveal">
+                      {course.title}
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="space-y-6 flex-1 flex flex-col">
+                    <p className="text-muted-foreground leading-relaxed flex-1">
+                      {course.description}
+                    </p>
+
+                    <div className="grid grid-cols-3 gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2 group-hover:text-primary transition-colors">
+                        <Star className="h-4 w-4 fill-yellow-400 text-yellow-400 group-hover:animate-pulse" />
+                        <span className="font-medium">{course.rating}</span>
+                      </div>
+                      <div className="flex items-center gap-2 group-hover:text-primary transition-colors">
+                        <Users className="h-4 w-4 group-hover:animate-bounce" />
+                        <span className="font-medium">
+                          {course.students.toLocaleString()}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 group-hover:text-primary transition-colors">
+                        <Clock className="h-4 w-4 group-hover:animate-spin" />
+                        <span className="font-medium">{course.duration}</span>
+                      </div>
+                    </div>
+
+                    <Link to="/course-details">
+                      <Button className="w-full btn-professional bg-primary hover:bg-primary/90 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <span>View Details</span>
+                        <Play className="ml-2 h-4 w-4 group-hover:animate-pulse" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </MagneticButton>
             ))}
-          </div>
+          </StaggeredList>
 
-          <div className="text-center mt-12">
-            <Link to="/courses">
-              <Button size="lg" variant="outline">
-                View All Courses
-              </Button>
-            </Link>
-          </div>
+          <AnimatedSection
+            animation="scale-in"
+            delay={600}
+            className="text-center mt-16"
+          >
+            <MagneticButton>
+              <Link to="/courses">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="btn-professional px-8 py-4 text-lg border-2 hover:scale-105"
+                >
+                  <BookOpen className="mr-3 h-5 w-5" />
+                  View All Courses
+                  <TrendingUp className="ml-3 h-5 w-5" />
+                </Button>
+              </Link>
+            </MagneticButton>
+          </AnimatedSection>
         </div>
       </section>
 
