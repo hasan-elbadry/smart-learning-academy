@@ -218,13 +218,15 @@
 
   /* Professional button styles with multiple effects */
   .btn-professional {
-    @apply relative overflow-hidden transition-all duration-300 transform-gpu;
+    @apply relative overflow-hidden transition-all duration-300 transform-gpu cursor-pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Ensure minimum contrast ratios */
+    min-height: 44px; /* WCAG AA compliance for touch targets */
   }
 
   .btn-professional::before {
     content: "";
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-700;
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-700 pointer-events-none;
   }
 
   .btn-professional:hover::before {
@@ -239,6 +241,22 @@
   .btn-professional:active {
     @apply scale-95;
     transform: translateY(0) scale(0.95);
+  }
+
+  /* Ensure button text is always visible */
+  .btn-professional.bg-white {
+    color: hsl(var(--primary)) !important;
+  }
+
+  .btn-professional.text-white {
+    background-color: transparent !important;
+    border-color: currentColor;
+  }
+
+  /* Fix potential z-index issues for interactive elements */
+  .interactive-element {
+    @apply relative z-10;
+    pointer-events: auto;
   }
 
   /* Navigation animations */
