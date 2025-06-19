@@ -350,8 +350,7 @@ export default function Home() {
           >
             {featuredCourses.map((course) => (
               <MagneticButton key={course.id} intensity={10}>
-                <Card className="course-card card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group transition-transform duration-300"
-                <Card className="card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group">
+                <Card className="course-card card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group transition-transform duration-300">
                   <div
                     className={cn(
                       "h-56 relative overflow-hidden",
