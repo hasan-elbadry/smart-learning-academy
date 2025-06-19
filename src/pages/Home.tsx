@@ -201,7 +201,7 @@ export default function Home() {
                         <Button
                           size="lg"
                           variant="outline"
-                          className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
+                          className="btn-professional border-2 border-white/80 text-primary hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
                         >
                           {t("home.hero.secondary")}
                           <TrendingUp className="ml-3 h-5 w-5" />
