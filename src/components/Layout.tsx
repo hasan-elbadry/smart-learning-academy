@@ -7,7 +7,7 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
-  const { direction } = useI18n();
+  const { direction, t } = useI18n();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -37,7 +37,9 @@ export function Layout({ children }: LayoutProps) {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-white text-center">
               <div className="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin mx-auto mb-4" />
-              <p className="text-xl font-semibold animate-pulse">Loading...</p>
+              <p className="text-xl font-semibold animate-pulse">
+                {t("common.loading")}
+              </p>
             </div>
           </div>
         </div>
