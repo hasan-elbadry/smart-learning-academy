@@ -454,14 +454,14 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative">
           <AnimatedSection animation="fade-up" className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-700 px-6 py-3 rounded-full mb-6 text-lg font-medium">
-              <CheckCircle className="h-6 w-6" />
+            <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-700 px-4 py-2 rounded-full mb-4 text-base font-medium">
+              <CheckCircle className="h-4 w-4" />
               {t("home.payment.encryption")}
             </div>
-            <h2 className="text-5xl font-bold mb-6">
+            <h2 className="text-section-title font-bold mb-5">
               {t("home.payment.title")}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {t("home.payment.subtitle")}
             </p>
           </AnimatedSection>
@@ -478,13 +478,13 @@ export default function Home() {
                     <FloatingElement duration={4000 + index * 500}>
                       <method.icon
                         className={cn(
-                          "h-16 w-16 mx-auto mb-4 transition-all duration-500 group-hover:scale-125",
+                          "h-12 w-12 mx-auto mb-3 transition-all duration-500 hover-scale-105",
                           method.color,
-                          "group-hover:animate-bounce",
+                        )}
                         )}
                       />
                     </FloatingElement>
-                    <div className="font-semibold text-base group-hover:text-primary transition-colors duration-300">
+                    <div className="font-medium text-sm group-hover:text-primary transition-colors duration-300">
                       {method.name}
                     </div>
 
@@ -506,7 +506,7 @@ export default function Home() {
                 <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                   <CheckCircle className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-lg font-semibold text-green-700 dark:text-green-400">
+                <span className="text-base font-medium text-green-700 dark:text-green-400">
                   {t("home.payment.encryption")}
                 </span>
               </div>
@@ -543,7 +543,7 @@ export default function Home() {
           <AnimatedSection animation="scale-in" className="mb-12">
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-8 py-4 mb-8">
               <Sparkles className="h-6 w-6 animate-pulse" />
-              <span className="text-lg font-semibold">
+              <span className="text-base font-medium">
                 {t("home.hero.subtitle")}
               </span>
               <Sparkles className="h-6 w-6 animate-pulse" />
@@ -551,13 +551,13 @@ export default function Home() {
           </AnimatedSection>
 
           <AnimatedSection animation="fade-up" delay={200}>
-            <h2 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+            <h2 className="text-section-title font-bold mb-6 leading-tight">
               <GlitchText text={t("home.cta.final.title")} />
             </h2>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-up" delay={400}>
-            <p className="text-2xl mb-12 opacity-95 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-lg mb-8 opacity-95 max-w-4xl mx-auto leading-relaxed font-light">
               {t("home.cta.final.subtitle")}
             </p>
           </AnimatedSection>
@@ -568,7 +568,7 @@ export default function Home() {
                 <Link to="/courses">
                   <Button
                     size="lg"
-                    className="btn-professional bg-white text-primary hover:bg-white/90 px-10 py-6 text-xl font-semibold shadow-2xl hover:shadow-white/25"
+                    className="btn-professional bg-white text-primary hover:bg-white/90 px-6 py-3 text-base font-semibold shadow-2xl hover:shadow-white/25 hover-scale-102"
                   >
                     <Play className="mr-3 h-6 w-6" />
                     {t("home.cta.final.button")}
@@ -582,7 +582,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-10 py-6 text-xl backdrop-blur-sm font-semibold"
+                    className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-6 py-3 text-base backdrop-blur-sm font-semibold hover-scale-102"
                   >
                     <Users className="mr-3 h-6 w-6" />
                     {t("home.cta.contact")}
