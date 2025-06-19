@@ -454,15 +454,13 @@ export default function About() {
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               {t("about.cta.subtitle")}
             </p>
-            <MagneticButton>
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
-              >
-                <Sparkles className="mr-2 h-5 w-5" />
-                {t("about.cta.button")}
-              </Button>
-            </MagneticButton>
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <Sparkles className="mr-2 h-5 w-5" />
+              {t("about.cta.button")}
+            </Button>
           </AnimatedSection>
         </div>
       </section>
