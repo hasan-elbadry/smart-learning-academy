@@ -219,35 +219,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Enhanced Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className={cn(
-            "absolute top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/30 shadow-lg",
-            direction === "rtl" ? "right-6" : "left-6",
-          )}
-        >
-          {direction === "rtl" ? (
-            <ChevronRight className="h-7 w-7" />
-          ) : (
-            <ChevronLeft className="h-7 w-7" />
-          )}
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className={cn(
-            "absolute top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/30 shadow-lg",
-            direction === "rtl" ? "left-6" : "right-6",
-          )}
-        >
-          {direction === "rtl" ? (
-            <ChevronLeft className="h-7 w-7" />
-          ) : (
-            <ChevronRight className="h-7 w-7" />
-          )}
-        </button>
-
         {/* Enhanced Slide Indicators */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 z-40">
           {heroSlides.map((_, index) => (
