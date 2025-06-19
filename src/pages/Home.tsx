@@ -41,23 +41,21 @@ export default function Home() {
 
   const heroSlides = [
     {
-      title: t("home.hero.title"),
-      subtitle: t("home.hero.subtitle"),
-      description: t("home.hero.description"),
+      title: t("home.hero.slide1.title"),
+      subtitle: t("home.hero.slide1.subtitle"),
+      description: t("home.hero.slide1.description"),
       image: "bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800",
     },
     {
-      title: "Expert-Led Training",
-      subtitle: "Learn from Industry Professionals",
-      description:
-        "Our courses are designed and taught by experts with real-world experience in their fields.",
+      title: t("home.hero.slide2.title"),
+      subtitle: t("home.hero.slide2.subtitle"),
+      description: t("home.hero.slide2.description"),
       image: "bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-800",
     },
     {
-      title: "Flexible Learning",
-      subtitle: "Study at Your Own Pace",
-      description:
-        "Access courses anytime, anywhere. Our platform adapts to your schedule and learning style.",
+      title: t("home.hero.slide3.title"),
+      subtitle: t("home.hero.slide3.subtitle"),
+      description: t("home.hero.slide3.description"),
       image: "bg-gradient-to-br from-orange-600 via-red-600 to-orange-800",
     },
   ];
@@ -211,7 +209,7 @@ export default function Home() {
                         <Button
                           size="lg"
                           variant="outline"
-                          className="btn-professional border-2 border-white/80 text-primary hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
+                          className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
                         >
                           {t("home.hero.secondary")}
                           <TrendingUp className="ml-3 h-5 w-5" />
@@ -224,7 +222,40 @@ export default function Home() {
             </div>
           ))}
         </div>
-      
+
+        {/* Enhanced Navigation Arrows */}
+        <MagneticButton intensity={8}>
+          <button
+            onClick={prevSlide}
+            className={cn(
+              "absolute top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
+              direction === "rtl" ? "right-6" : "left-6",
+            )}
+          >
+            {direction === "rtl" ? (
+              <ChevronRight className="h-7 w-7 morph-icon" />
+            ) : (
+              <ChevronLeft className="h-7 w-7 morph-icon" />
+            )}
+          </button>
+        </MagneticButton>
+
+        <MagneticButton intensity={8}>
+          <button
+            onClick={nextSlide}
+            className={cn(
+              "absolute top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-white/10 hover:bg-white/25 transition-all duration-300 text-white backdrop-blur-sm hover:scale-110 border border-white/20",
+              direction === "rtl" ? "left-6" : "right-6",
+            )}
+          >
+            {direction === "rtl" ? (
+              <ChevronLeft className="h-7 w-7 morph-icon" />
+            ) : (
+              <ChevronRight className="h-7 w-7 morph-icon" />
+            )}
+          </button>
+        </MagneticButton>
+
         {/* Enhanced Slide Indicators */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
           {heroSlides.map((_, index) => (
@@ -262,10 +293,10 @@ export default function Home() {
           <AnimatedSection animation="fade-up" className="mb-12">
             <div className="text-center">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-                Our Impact
+                {t("home.stats.title")}
               </h2>
               <p className="text-xl opacity-90 max-w-2xl mx-auto">
-                Trusted by thousands of learners worldwide
+                {t("home.stats.subtitle")}
               </p>
             </div>
           </AnimatedSection>
@@ -339,7 +370,7 @@ export default function Home() {
           <AnimatedSection animation="fade-up" className="text-center mb-20">
             <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20 animate-pulse-slow">
               <Sparkles className="mr-2 h-5 w-5" />
-              Featured Courses
+              {t("home.featured.badge")}
             </Badge>
             <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
               {t("home.featured.title")}
@@ -418,7 +449,7 @@ export default function Home() {
 
                     <Link to="/course-details">
                       <Button className="w-full btn-professional bg-primary hover:bg-primary/90 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                        <span>View Details</span>
+                        <span>{t("courses.viewDetails")}</span>
                         <Play className="ml-2 h-4 w-4 group-hover:animate-pulse" />
                       </Button>
                     </Link>
@@ -441,7 +472,7 @@ export default function Home() {
                   className="btn-professional px-8 py-4 text-lg border-2 hover:scale-105"
                 >
                   <BookOpen className="mr-3 h-5 w-5" />
-                  View All Courses
+                  {t("common.viewAll")} {t("nav.courses")}
                   <TrendingUp className="ml-3 h-5 w-5" />
                 </Button>
               </Link>
@@ -462,7 +493,7 @@ export default function Home() {
           <AnimatedSection animation="fade-up" className="text-center mb-20">
             <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-700 px-6 py-3 rounded-full mb-6 text-lg font-medium">
               <CheckCircle className="h-6 w-6" />
-              Secure & Trusted
+              {t("home.payment.encryption")}
             </div>
             <h2 className="text-5xl font-bold mb-6">
               {t("home.payment.title")}
@@ -513,12 +544,11 @@ export default function Home() {
                   <CheckCircle className="h-4 w-4 text-white" />
                 </div>
                 <span className="text-lg font-semibold text-green-700 dark:text-green-400">
-                  256-bit SSL Encryption
+                  {t("home.payment.encryption")}
                 </span>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                All transactions are secured with military-grade encryption.
-                Your payment information is never stored on our servers.
+                {t("home.payment.security")}
               </p>
             </div>
           </AnimatedSection>
@@ -551,7 +581,7 @@ export default function Home() {
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-8 py-4 mb-8">
               <Sparkles className="h-6 w-6 animate-pulse" />
               <span className="text-lg font-semibold">
-                Transform Your Future
+                {t("home.hero.subtitle")}
               </span>
               <Sparkles className="h-6 w-6 animate-pulse" />
             </div>
@@ -559,24 +589,13 @@ export default function Home() {
 
           <AnimatedSection animation="fade-up" delay={200}>
             <h2 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
-              <GlitchText text="Ready to Start" />
-              <br />
-              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                Learning?
-              </span>
+              <GlitchText text={t("home.cta.final.title")} />
             </h2>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-up" delay={400}>
             <p className="text-2xl mb-12 opacity-95 max-w-4xl mx-auto leading-relaxed font-light">
-              Join{" "}
-              <CountUp
-                end={25000}
-                suffix="+"
-                className="font-bold text-yellow-300"
-              />{" "}
-              students who have transformed their careers with our expert-led
-              courses.
+              {t("home.cta.final.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -589,7 +608,7 @@ export default function Home() {
                     className="btn-professional bg-white text-primary hover:bg-white/90 px-10 py-6 text-xl font-semibold shadow-2xl hover:shadow-white/25"
                   >
                     <Play className="mr-3 h-6 w-6" />
-                    Browse Courses
+                    {t("home.cta.final.button")}
                     <Sparkles className="ml-3 h-6 w-6" />
                   </Button>
                 </Link>
@@ -603,7 +622,7 @@ export default function Home() {
                     className="btn-professional border-2 border-white/80 text-white hover:bg-white/20 px-10 py-6 text-xl backdrop-blur-sm font-semibold"
                   >
                     <Users className="mr-3 h-6 w-6" />
-                    Contact Us
+                    {t("home.cta.contact")}
                   </Button>
                 </Link>
               </MagneticButton>
@@ -613,9 +632,15 @@ export default function Home() {
           <AnimatedSection animation="fade-in" delay={800} className="mt-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {[
-                { icon: CheckCircle, text: "30-Day Money Back Guarantee" },
-                { icon: Award, text: "Industry-Recognized Certificates" },
-                { icon: Users, text: "24/7 Student Support" },
+                {
+                  icon: CheckCircle,
+                  text: t("home.cta.final.features.guarantee"),
+                },
+                {
+                  icon: Award,
+                  text: t("home.cta.final.features.certificates"),
+                },
+                { icon: Users, text: t("home.cta.final.features.support") },
               ].map((feature, index) => (
                 <div
                   key={index}
