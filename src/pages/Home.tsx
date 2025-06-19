@@ -481,7 +481,6 @@ export default function Home() {
                           "h-12 w-12 mx-auto mb-3 transition-all duration-500 hover-scale-105",
                           method.color,
                         )}
-                        )}
                       />
                     </FloatingElement>
                     <div className="font-medium text-sm group-hover:text-primary transition-colors duration-300">
