@@ -207,14 +207,13 @@ export default function Courses() {
           <AnimatedSection animation="fade-up" className="text-center mb-16">
             <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20">
               <BookOpen className="mr-2 h-5 w-5" />
-              All Courses
+              {t("courses.title")}
             </Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
               {t("nav.courses")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Discover our comprehensive collection of expert-led courses
-              designed to advance your career and expand your knowledge.
+              {t("courses.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -229,7 +228,7 @@ export default function Courses() {
                 <div className="relative md:col-span-2">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
-                    placeholder="Search courses..."
+                    placeholder={t("courses.search")}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10 h-12 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
@@ -239,31 +238,50 @@ export default function Courses() {
                 <Select value={filterBy} onValueChange={setFilterBy}>
                   <SelectTrigger className="h-12 bg-background/50 border-border/50">
                     <Filter className="mr-2 h-4 w-4" />
-                    <SelectValue placeholder="Category" />
+                    <SelectValue placeholder={t("courses.filter.category")} />
                   </SelectTrigger>
                   <SelectContent>
-                    {categories.map((category) => (
-                      <SelectItem key={category} value={category.toLowerCase()}>
-                        {category}
-                      </SelectItem>
-                    ))}
+                    <SelectItem value="all">
+                      {t("courses.category.all")}
+                    </SelectItem>
+                    <SelectItem value="development">
+                      {t("courses.category.development")}
+                    </SelectItem>
+                    <SelectItem value="marketing">
+                      {t("courses.category.marketing")}
+                    </SelectItem>
+                    <SelectItem value="data science">
+                      {t("courses.category.dataScience")}
+                    </SelectItem>
+                    <SelectItem value="design">
+                      {t("courses.category.design")}
+                    </SelectItem>
+                    <SelectItem value="business">
+                      {t("courses.category.business")}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
 
                 <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger className="h-12 bg-background/50 border-border/50">
                     <TrendingUp className="mr-2 h-4 w-4" />
-                    <SelectValue placeholder="Sort by" />
+                    <SelectValue placeholder={t("courses.filter.sort")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="popular">Most Popular</SelectItem>
-                    <SelectItem value="rating">Highest Rated</SelectItem>
-                    <SelectItem value="students">Most Students</SelectItem>
+                    <SelectItem value="popular">
+                      {t("courses.sort.popular")}
+                    </SelectItem>
+                    <SelectItem value="rating">
+                      {t("courses.sort.rating")}
+                    </SelectItem>
+                    <SelectItem value="students">
+                      {t("courses.sort.students")}
+                    </SelectItem>
                     <SelectItem value="price-low">
-                      Price: Low to High
+                      {t("courses.sort.priceLow")}
                     </SelectItem>
                     <SelectItem value="price-high">
-                      Price: High to Low
+                      {t("courses.sort.priceHigh")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -271,11 +289,11 @@ export default function Courses() {
 
               <div className="flex items-center justify-between">
                 <p className="text-muted-foreground">
-                  Found{" "}
+                  {t("courses.found")}{" "}
                   <span className="font-semibold text-primary">
                     {sortedCourses.length}
                   </span>{" "}
-                  courses
+                  {t("courses.results")}
                 </p>
                 <div className="flex items-center gap-2">
                   <Button
@@ -424,10 +442,10 @@ export default function Courses() {
               <div className="max-w-md mx-auto">
                 <BookOpen className="h-24 w-24 mx-auto mb-6 text-muted-foreground/50" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  No courses found
+                  {t("courses.noResults.title")}
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  Try adjusting your search criteria or filters.
+                  {t("courses.noResults.description")}
                 </p>
                 <Button
                   onClick={() => {
@@ -436,7 +454,7 @@ export default function Courses() {
                   }}
                   variant="outline"
                 >
-                  Clear Filters
+                  {t("courses.noResults.clear")}
                 </Button>
               </div>
             </AnimatedSection>
@@ -452,11 +470,10 @@ export default function Courses() {
         <div className="container mx-auto px-4 text-center relative">
           <AnimatedSection animation="scale-in">
             <h2 className="text-4xl font-bold mb-6">
-              Ready to Start Learning?
+              {t("courses.cta.title")}
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join thousands of students who have transformed their careers with
-              our expert-led courses.
+              {t("courses.cta.subtitle")}
             </p>
             <MagneticButton>
               <Link to="/contact">
@@ -465,7 +482,7 @@ export default function Courses() {
                   className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
                 >
                   <Sparkles className="mr-2 h-5 w-5" />
-                  Get Started Today
+                  {t("courses.cta.button")}
                 </Button>
               </Link>
             </MagneticButton>
