@@ -205,14 +205,14 @@ export default function Courses() {
 
         <div className="container mx-auto px-4 relative">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <Badge className="mb-6 px-6 py-2 text-lg bg-primary/10 text-primary border-primary/20">
-              <BookOpen className="mr-2 h-5 w-5" />
+            <Badge className="mb-5 px-4 py-1.5 text-base bg-primary/10 text-primary border-primary/20">
+              <BookOpen className="mr-2 h-4 w-4" />
               {t("courses.title")}
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+            <h1 className="text-section-title font-bold mb-5 gradient-text">
               {t("nav.courses")}
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {t("courses.subtitle")}
             </p>
           </AnimatedSection>
