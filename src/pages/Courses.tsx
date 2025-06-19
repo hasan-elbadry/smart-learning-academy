@@ -288,7 +288,7 @@ export default function Courses() {
               </div>
 
               <div className="flex items-center justify-between">
-                <Card className="course-card card-hover bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 overflow-hidden h-full group transition-transform duration-300"
+                <p className="text-muted-foreground">
                   {t("courses.found")}{" "}
                   <span className="font-semibold text-primary">
                     {sortedCourses.length}
@@ -334,7 +334,7 @@ export default function Courses() {
             {sortedCourses.map((course) => (
               <MagneticButton key={course.id} intensity={8}>
                 <Card
-                  className={`card-hover h-full overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 ${
+                  className={`course-card card-hover h-full overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 transition-transform duration-300 ${
                     viewMode === "list" ? "flex" : ""
                   }`}
                 >
