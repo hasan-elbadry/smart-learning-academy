@@ -286,13 +286,13 @@ export default function CourseDetails() {
                   <div className="flex items-center gap-4 mb-6">
                     <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2">
                       <Sparkles className="mr-2 h-4 w-4" />
-                      Featured Course
+                      {t("courseDetails.badge.featured")}
                     </Badge>
                     <Badge variant="outline" className="px-4 py-2">
-                      {course.level}
+                      {t("courses.level.advanced")}
                     </Badge>
                     <Badge variant="outline" className="px-4 py-2">
-                      {course.category}
+                      {t("courses.category.development")}
                     </Badge>
                   </div>
 
@@ -310,7 +310,8 @@ export default function CourseDetails() {
                       <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                       <span className="font-semibold">{course.rating}</span>
                       <span className="text-muted-foreground">
-                        ({course.reviewCount.toLocaleString()} reviews)
+                        ({course.reviewCount.toLocaleString()}{" "}
+                        {t("courseDetails.reviews")})
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -318,7 +319,9 @@ export default function CourseDetails() {
                       <span className="font-semibold">
                         {course.students.toLocaleString()}
                       </span>
-                      <span className="text-muted-foreground">students</span>
+                      <span className="text-muted-foreground">
+                        {t("courseDetails.students")}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
@@ -343,19 +346,23 @@ export default function CourseDetails() {
                     </Avatar>
                     <div>
                       <p className="text-sm text-muted-foreground">
-                        Instructor
+                        {t("courseDetails.instructor")}
                       </p>
                       <h3 className="text-lg font-semibold">
                         {course.instructor.name}
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        {course.instructor.title} at {course.instructor.company}
+                        {course.instructor.title} {t("common.at")}{" "}
+                        {course.instructor.company}
                       </p>
                       <div className="flex items-center gap-4 mt-2 text-sm">
                         <span>
-                          {course.instructor.students.toLocaleString()} students
+                          {course.instructor.students.toLocaleString()}{" "}
+                          {t("courseDetails.students")}
                         </span>
-                        <span>{course.instructor.courses} courses</span>
+                        <span>
+                          {course.instructor.courses} {t("nav.courses")}
+                        </span>
                         <div className="flex items-center gap-1">
                           <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                           <span>{course.instructor.rating}</span>
@@ -401,11 +408,13 @@ export default function CourseDetails() {
                               ${course.originalPrice}
                             </span>
                             <Badge className="bg-red-500 text-white">
-                              {course.discount}% OFF
+                              {course.discount}%{" "}
+                              {t("courseDetails.price.discount")}
                             </Badge>
                           </div>
                           <p className="text-sm text-muted-foreground">
-                            One-time payment • Lifetime access
+                            {t("courseDetails.price.payment")} •{" "}
+                            {t("courseDetails.price.access")}
                           </p>
                         </div>
 
@@ -420,12 +429,12 @@ export default function CourseDetails() {
                               {isEnrolled ? (
                                 <>
                                   <CheckCircle className="mr-2 h-5 w-5" />
-                                  Enrolled
+                                  {t("courseDetails.enrolled")}
                                 </>
                               ) : (
                                 <>
                                   <Zap className="mr-2 h-5 w-5" />
-                                  Enroll Now
+                                  {t("courseDetails.enroll")}
                                 </>
                               )}
                             </Button>
@@ -440,7 +449,9 @@ export default function CourseDetails() {
                               <Bookmark
                                 className={`mr-2 h-4 w-4 ${isBookmarked ? "fill-current" : ""}`}
                               />
-                              {isBookmarked ? "Saved" : "Save"}
+                              {isBookmarked
+                                ? t("courseDetails.saved")
+                                : t("courseDetails.save")}
                             </Button>
                             <Button variant="outline" onClick={handleShare}>
                               <Share2 className="h-4 w-4" />
@@ -451,17 +462,34 @@ export default function CourseDetails() {
                         {/* Course Features */}
                         <div className="space-y-3">
                           <h4 className="font-semibold">
-                            This course includes:
+                            {t("courseDetails.includes")}
                           </h4>
-                          {course.features.map((feature, index) => (
-                            <div
-                              key={index}
-                              className="flex items-center gap-3 text-sm"
-                            >
-                              <feature.icon className="h-4 w-4 text-primary" />
-                              <span>{feature.text}</span>
-                            </div>
-                          ))}
+                          <div className="flex items-center gap-3 text-sm">
+                            <Monitor className="h-4 w-4 text-primary" />
+                            <span>12 {t("courseDetails.features.video")}</span>
+                          </div>
+                          <div className="flex items-center gap-3 text-sm">
+                            <Download className="h-4 w-4 text-primary" />
+                            <span>{t("courseDetails.features.resources")}</span>
+                          </div>
+                          <div className="flex items-center gap-3 text-sm">
+                            <Smartphone className="h-4 w-4 text-primary" />
+                            <span>{t("courseDetails.features.mobile")}</span>
+                          </div>
+                          <div className="flex items-center gap-3 text-sm">
+                            <Trophy className="h-4 w-4 text-primary" />
+                            <span>
+                              {t("courseDetails.features.certificate")}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-3 text-sm">
+                            <Globe className="h-4 w-4 text-primary" />
+                            <span>{t("courseDetails.features.lifetime")}</span>
+                          </div>
+                          <div className="flex items-center gap-3 text-sm">
+                            <Headphones className="h-4 w-4 text-primary" />
+                            <span>{t("courseDetails.features.support")}</span>
+                          </div>
                         </div>
 
                         {/* Guarantee */}
@@ -469,7 +497,7 @@ export default function CourseDetails() {
                           <div className="flex items-center gap-2 text-green-700 dark:text-green-400">
                             <Shield className="h-4 w-4" />
                             <span className="text-sm font-medium">
-                              30-day money-back guarantee
+                              {t("courseDetails.guarantee")}
                             </span>
                           </div>
                         </div>
@@ -493,10 +521,18 @@ export default function CourseDetails() {
               className="w-full"
             >
               <TabsList className="grid w-full grid-cols-4 mb-12">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                <TabsTrigger value="instructor">Instructor</TabsTrigger>
-                <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                <TabsTrigger value="overview">
+                  {t("courseDetails.tabs.overview")}
+                </TabsTrigger>
+                <TabsTrigger value="curriculum">
+                  {t("courseDetails.tabs.curriculum")}
+                </TabsTrigger>
+                <TabsTrigger value="instructor">
+                  {t("courseDetails.tabs.instructor")}
+                </TabsTrigger>
+                <TabsTrigger value="reviews">
+                  {t("courseDetails.tabs.reviews")}
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-12">
@@ -506,7 +542,7 @@ export default function CourseDetails() {
                     <CardHeader>
                       <CardTitle className="text-2xl flex items-center gap-2">
                         <Target className="h-6 w-6 text-primary" />
-                        What You'll Learn
+                        {t("courseDetails.learn.title")}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -537,7 +573,7 @@ export default function CourseDetails() {
                     <CardHeader>
                       <CardTitle className="text-2xl flex items-center gap-2">
                         <BookOpen className="h-6 w-6 text-primary" />
-                        Requirements
+                        {t("courseDetails.requirements.title")}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -558,7 +594,7 @@ export default function CourseDetails() {
                   <Card className="bg-card/80 backdrop-blur-sm">
                     <CardHeader>
                       <CardTitle className="text-2xl">
-                        Course Description
+                        {t("courseDetails.description.title")}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -574,7 +610,7 @@ export default function CourseDetails() {
                 <AnimatedSection animation="fade-up">
                   <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold mb-4">
-                      Course Curriculum
+                      {t("courseDetails.curriculum.title")}
                     </h2>
                     <p className="text-xl text-muted-foreground">
                       <CountUp
@@ -583,7 +619,8 @@ export default function CourseDetails() {
                           0,
                         )}
                       />{" "}
-                      lessons • <CountUp end={15} /> hours total
+                      {t("courseDetails.curriculum.lessons")} •{" "}
+                      <CountUp end={15} /> {t("courseDetails.curriculum.hours")}
                     </p>
                   </div>
 
@@ -815,11 +852,10 @@ export default function CourseDetails() {
         <div className="container mx-auto px-4 text-center relative">
           <AnimatedSection animation="scale-in">
             <h2 className="text-4xl font-bold mb-6">
-              Ready to Start Learning?
+              {t("courseDetails.cta.title")}
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join thousands of students who have transformed their careers with
-              this course.
+              {t("courseDetails.cta.subtitle")}
             </p>
             <MagneticButton>
               <Button
@@ -828,7 +864,7 @@ export default function CourseDetails() {
                 onClick={handleEnroll}
               >
                 <Sparkles className="mr-2 h-5 w-5" />
-                Enroll Now - ${course.price}
+                {t("courseDetails.enroll")} - ${course.price}
               </Button>
             </MagneticButton>
           </AnimatedSection>
