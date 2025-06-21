@@ -194,15 +194,16 @@ export default function Home() {
                     </div>
 
                     <div className="hero-text-delay-3 flex flex-col sm:flex-row gap-6 relative z-30">
-                      <Button
+                       <Link to="/contact"> <Button
                         size="lg"
                         className="btn-professional bg-white text-primary hover:bg-white/90 px-6 py-3 text-base shadow-2xl font-semibold hover-scale-102"
                       >
+                         
                         <Play className="mr-3 h-6 w-6" />
                         {t("home.hero.cta")}
                         <Sparkles className="ml-3 h-5 w-5" />
                       </Button>
-
+                         <link/>
                       <Button
                         size="lg"
                         variant="outline"
