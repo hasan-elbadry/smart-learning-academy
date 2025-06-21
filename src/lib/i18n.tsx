@@ -30,14 +30,14 @@ const translations = {
         "home.hero.title": "Smart Learning Academy",
         "home.hero.subtitle": "Transform Your Future with Expert-Led Courses",
         "home.hero.description":
-            "Join thousands of students in our world-class educational platform. Learn from industry experts and advance your career with our comprehensive courses.",
+            "Join thousands of students in our world-class educational platform. Learn from industry experts.",
         "home.hero.cta": "Explore Courses",
         "home.hero.secondary": "Learn More",
         "home.hero.slide1.title": "Smart Learning Academy",
         "home.hero.slide1.subtitle":
             "Transform Your Future with Expert-Led Courses",
         "home.hero.slide1.description":
-            "Join thousands of students in our world-class educational platform. Learn from industry experts and advance your career with our comprehensive courses.",
+            "Join thousands of students in our world-class educational platform.",
         "home.hero.slide2.title": "Expert-Led Training",
         "home.hero.slide2.subtitle": "Learn from Industry Professionals",
         "home.hero.slide2.description":
